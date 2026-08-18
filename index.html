@@ -28,7 +28,25 @@
       border-bottom: 1px solid #1c1e27;
     }
 
-    .logo {
+    .logo {.happy-a {
+        width: 28px;
+          height: 28px;
+            display: inline-block;
+              vertical-align: middle;
+                margin: 0 2px;
+                }
+
+                .happy-a path {
+                  fill: none;
+                    stroke: #7c5cff;
+                      stroke-width: 4;
+                        stroke-linecap: round;
+                        }
+
+                        .happy-a circle {
+                          fill: #7c5cff;
+                          }
+    }
       font-size: 24px;
       font-weight: 800;
     }
@@ -197,7 +215,15 @@
 <body>
 
 <header>
-  <div class="logo">H<span class="smile">◡</span>ppy<span>Tip</span></div>
+  <<div class="logo">
+      H
+        <svg class="happy-a" viewBox="0 0 40 40" aria-label="Happy">
+            <path d="M8 22 Q20 35 32 22"></path>
+                <circle cx="13" cy="17" r="2.5"></circle>
+                    <circle cx="27" cy="17" r="2.5"></circle>
+                      </svg>
+                        ppy<span>Tip</span>
+                        </div>H<span class="smile">◡</span>ppy<span>Tip</span></div>
 
   <nav>
     <a href="#about">About</a>
