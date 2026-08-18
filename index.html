@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
     body {
       font-family: Arial, sans-serif;
       background: #08090d;
-      color: #fff;
+      color: #ffffff;
       line-height: 1.6;
     }
 
@@ -28,31 +28,33 @@
       border-bottom: 1px solid #1c1e27;
     }
 
-    .logo {.happy-a {
-        width: 28px;
-          height: 28px;
-            display: inline-block;
-              vertical-align: middle;
-                margin: 0 2px;
-                }
-
-                .happy-a path {
-                  fill: none;
-                    stroke: #7c5cff;
-                      stroke-width: 4;
-                        stroke-linecap: round;
-                        }
-
-                        .happy-a circle {
-                          fill: #7c5cff;
-                          }
-    }
+    .logo {
+      display: flex;
+      align-items: center;
       font-size: 24px;
       font-weight: 800;
+      letter-spacing: -0.5px;
     }
 
-    .logo span {
-      color: #7c5cff;
+    .happy-a {
+      width: 28px;
+      height: 28px;
+      margin: 0 3px;
+    }
+
+    .happy-a path {
+      fill: none;
+      stroke: #8b6cff;
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+
+    .happy-a circle {
+      fill: #8b6cff;
+    }
+
+    .logo-tip {
+      color: #8b6cff;
     }
 
     nav a {
@@ -68,7 +70,7 @@
 
     .hero {
       text-align: center;
-      padding: 90px 20px 70px;
+      padding: 90px 20px 75px;
       background: radial-gradient(circle at top, #19132f, #08090d 55%);
     }
 
@@ -89,7 +91,7 @@
     }
 
     h1 span {
-      color: #7c5cff;
+      color: #8b6cff;
     }
 
     .hero p {
@@ -110,7 +112,7 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
-      background: #7c5cff;
+      background: #8b6cff;
       color: #fff;
     }
 
@@ -168,10 +170,6 @@
       margin-bottom: 8px;
     }
 
-    .burn {
-      border-color: #442b2b;
-    }
-
     .burn .number {
       color: #ff6b6b;
     }
@@ -215,15 +213,15 @@
 <body>
 
 <header>
-  <<div class="logo">
-      H
-        <svg class="happy-a" viewBox="0 0 40 40" aria-label="Happy">
-            <path d="M8 22 Q20 35 32 22"></path>
-                <circle cx="13" cy="17" r="2.5"></circle>
-                    <circle cx="27" cy="17" r="2.5"></circle>
-                      </svg>
-                        ppy<span>Tip</span>
-                        </div>H<span class="smile">◡</span>ppy<span>Tip</span></div>
+  <div class="logo">
+    H
+    <svg class="happy-a" viewBox="0 0 40 40" aria-label="Happy smile">
+      <circle cx="13" cy="15" r="2.5"></circle>
+      <circle cx="27" cy="15" r="2.5"></circle>
+      <path d="M9 21 Q20 34 31 21"></path>
+    </svg>
+    ppy<span class="logo-tip">Tip</span>
+  </div>
 
   <nav>
     <a href="#about">About</a>
@@ -249,7 +247,6 @@
 </section>
 
 <section id="about">
-
   <div class="title">
     <h2>Why HappyTip?</h2>
     <p>A simple ecosystem built around community activity.</p>
@@ -285,7 +282,6 @@
 </section>
 
 <section id="how">
-
   <div class="title">
     <h2>How It Works</h2>
     <p>Simple community tipping.</p>
@@ -312,7 +308,6 @@
 </section>
 
 <section id="tokenomics">
-
   <div class="title">
     <h2>HTP Tokenomics</h2>
     <p>Initial allocation structure.</p>
