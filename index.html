@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HappyTip — HTP</title>
+  <meta name="description" content="HappyTip — Community-driven tipping ecosystem powered by HTP.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #08090d;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1c1e27;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #7c5cff;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 70px;
+      background: radial-gradient(circle at top, #19132f, #08090d 55%);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 14px;
+      border: 1px solid #30275b;
+      border-radius: 30px;
+      color: #a996ff;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(45px, 9vw, 85px);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: #7c5cff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #aaa;
+      font-size: 17px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      margin: 6px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      background: #7c5cff;
+      color: #fff;
+    }
+
+    .btn.secondary {
+      background: #171922;
+      border: 1px solid #292c38;
+    }
+
+    section {
+      max-width: 1050px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .title h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .title p {
+      color: #888;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #11131a;
+      border: 1px solid #20232e;
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #999;
+      font-size: 14px;
+    }
+
+    .number {
+      font-size: 28px;
+      font-weight: 800;
+      color: #9b86ff;
+      margin-bottom: 8px;
+    }
+
+    .burn {
+      border-color: #442b2b;
+    }
+
+    .burn .number {
+      color: #ff6b6b;
+    }
+
+    .tokenomics {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid #22252f;
+    }
+
+    .row span:last-child {
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      border-top: 1px solid #1c1e27;
+      color: #666;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+      }
+
+      header {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Happy<span>Tip</span></div>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#how">How It Works</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="badge">Powered by HTP</div>
+
+  <h1>Tip. Earn. <span>Share.</span></h1>
+
+  <p>
+    HappyTip is a community-driven tipping ecosystem
+    built to make digital tipping simple, social and rewarding.
+  </p>
+
+  <div class="buttons">
+    <a class="btn" href="#tokenomics">Explore HTP</a>
+    <a class="btn secondary" href="https://t.me/" target="_blank">Telegram</a>
+  </div>
+</section>
+
+<section id="about">
+
+  <div class="title">
+    <h2>Why HappyTip?</h2>
+    <p>A simple ecosystem built around community activity.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="number">1B</div>
+      <h3>Total Supply</h3>
+      <p>HTP has a fixed initial supply of 1,000,000,000 tokens.</p>
+    </div>
+
+    <div class="card burn">
+      <div class="number">1%</div>
+      <h3>Burn</h3>
+      <p>1% of eligible tipping activity is permanently burned.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">0%</div>
+      <h3>Dev Allocation</h3>
+      <p>No dedicated developer token allocation.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">1%</div>
+      <h3>Treasury</h3>
+      <p>A portion of tipping activity supports ecosystem operations.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="how">
+
+  <div class="title">
+    <h2>How It Works</h2>
+    <p>Simple community tipping.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>01 — Tip</h3>
+      <p>Send HTP to another community member.</p>
+    </div>
+
+    <div class="card">
+      <h3>02 — Receive</h3>
+      <p>The recipient receives the majority of the tip.</p>
+    </div>
+
+    <div class="card">
+      <h3>03 — Burn</h3>
+      <p>A portion is permanently removed from supply.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="tokenomics">
+
+  <div class="title">
+    <h2>HTP Tokenomics</h2>
+    <p>Initial allocation structure.</p>
+  </div>
+
+  <div class="tokenomics">
+
+    <div class="row">
+      <span>Community</span>
+      <span>40%</span>
+    </div>
+
+    <div class="row">
+      <span>Rewards & Missions</span>
+      <span>30%</span>
+    </div>
+
+    <div class="row">
+      <span>Liquidity</span>
+      <span>10%</span>
+    </div>
+
+    <div class="row">
+      <span>Treasury / Ecosystem</span>
+      <span>20%</span>
+    </div>
+
+    <div class="row">
+      <span>Dev Allocation</span>
+      <span>0%</span>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 HappyTip. Built for the community.
+</footer>
+
+</body>
+</html>
