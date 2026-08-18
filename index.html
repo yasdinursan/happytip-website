@@ -108,61 +108,185 @@ display:flex;align-items:center;justify-content:center;margin:0 auto 17px;font-s
 .step h3{font-size:17px;margin-bottom:8px}.step p{font-size:12px;color:#8d909b}
 .utilitygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
 .utility{padding:25px}.utility h3{font-size:16px;margin:15px 0 7px}.utility p{font-size:12px;color:#8e919c}
-.tokenlayout{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;align-items:center}
-.tokenvisual{display:flex;justify-content:center;align-items:center;position:relative;min-height:350px}
-.donut{
-width:290px;height:290px;border-radius:50%;
-background:conic-gradient(#8d75ff 0 40%,#54d9ff 40% 60%,#ffbd69 60% 75%,#65e6a5 75% 85%,#ff78ad 85% 95%,#7d8494 95% 100%);
-padding:38px;animation:scalein 1s ease both;position:relative
+section[id]{scroll-margin-top:105px}\n\n.tokenlayout{
+display:block;
+width:100%;
 }
-.inner{
-width:100%;height:100%;border-radius:50%;background:
-linear-gradient(145deg,#151a25,#0f131c);border:1px solid #252833;
-display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center
+
+
+#8d75ff 0 40%,
+#54d9ff 40% 60%,
+#ffbd69 60% 75%,
+#65e6a5 75% 85%,
+#ff78ad 85% 95%,
+#7d8494 95% 100%
+);
+padding:30px;
+position:relative;
+box-shadow:0 0 45px rgba(141,117,255,.12);
 }
-.inner strong{font-size:22px;letter-spacing:-.8px;white-space:nowrap}
-.inner span{font-size:10px;color:#858894;margin-top:4px}
-.token-label{
-position:absolute;z-index:3;padding:6px 9px;border-radius:8px;
-background:#171a23ee;border:1px solid #292c37;font-size:10px;font-weight:900;
-box-shadow:0 8px 25px #0005;white-space:nowrap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.allocation-stats{
+width:min(820px,100%);
+margin:10px auto 0;
+display:grid;
+gap:12px;
 }
-.tl1{top:7%;left:2%}.tl2{top:2%;right:3%}.tl3{bottom:7%;right:0}
-.tl4{bottom:0;left:17%}.tl5{top:45%;left:-8%}.tl6{bottom:31%;right:-8%}
-.rows{display:grid;gap:10px}
-.row{
-display:flex;justify-content:space-between;align-items:center;padding:17px 19px;
-background:
-linear-gradient(145deg,rgba(24,28,40,.92),rgba(14,17,25,.92));border:1px solid #20232d;border-radius:14px
+
+.allocation-stat{
+padding:15px 17px;
+border:1px solid #272c38;
+border-radius:14px;
+background:linear-gradient(145deg,#151a24,#10141d);
 }
-.rname{display:flex;align-items:center;gap:9px;font-size:13px}.rdot{width:9px;height:9px;border-radius:50%;background:#8d75ff}
-.row strong{font-size:13px}
-.mechanism{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:stretch}
-.mstep{padding:25px;text-align:center;position:relative}
-.mstep h3{font-size:15px;margin:12px 0 6px}.mstep p{font-size:11px;color:#8e919d}
-.arrow{display:flex;align-items:center;justify-content:center;color:#665d87;font-size:25px}
-.burn{
-display:grid;grid-template-columns:1fr 1fr;gap:20px
+
+.allocation-stat-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+margin-bottom:9px;
 }
-.burnmain{padding:38px;position:relative;overflow:hidden}
-.burnmain:after{
-content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-120px;top:-120px;
-background:#8d75ff;filter:blur(80px);opacity:.15
+
+.allocation-stat-head strong{
+font-size:15px;
+font-weight:900;
+color:#eef0f7;
 }
-.burnnumber{font-size:62px;line-height:1;font-weight:900;color:#a494ff}
-.burnmain h3{font-size:24px;margin:16px 0 10px}.burnmain p{font-size:13px;color:#9396a2;line-height:1.9;position:relative;z-index:2}
-.burnside{display:grid;gap:12px}.mini{padding:25px}.mini strong{display:block;font-size:17px;margin-bottom:7px}.mini span{font-size:12px;color:#8e919d}
-.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.phase{padding:25px}.phase b{font-size:10px;color:#927bff;letter-spacing:1px}.phase h3{margin:9px 0;font-size:17px}.phase p{font-size:12px;color:#8e919d}
-.transparency{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.faq{display:grid;gap:10px}
-details{background:
-linear-gradient(145deg,rgba(24,28,40,.92),rgba(14,17,25,.92));border:1px solid #20232d;border-radius:14px;padding:18px 20px}
-summary{cursor:pointer;font-weight:750;font-size:13px}
-details p{color:#8f929d;font-size:12px;margin-top:10px;line-height:1.8}
-.community{text-align:center;padding:75px 25px;border:1px solid #2b2440;border-radius:25px;background:radial-gradient(circle at 50% 0,#8d75ff18,transparent 58%),#0d0f15}
-.community h2{font-size:clamp(30px,5vw,45px);letter-spacing:-1.5px}.community p{max-width:620px;margin:14px auto 27px;color:#9295a1;font-size:14px}
-footer{border-top:1px solid #1b1d25;margin-top:90px;padding:32px 0;color:#696c78;font-size:11px}
+
+.allocation-stat-head span{
+font-size:13px;
+font-weight:950;
+color:#b7b0ff;
+white-space:nowrap;
+}
+
+.allocation-bar{
+height:8px;
+border-radius:99px;
+background:#242936;
+overflow:hidden;
+}
+
+.allocation-bar i{
+display:block;
+height:100%;
+border-radius:99px;
+}
+
+.bar-community{background:#7c5cff}
+.bar-liquidity{background:#21d4fd}
+.bar-treasury{background:#36d399}
+.bar-marketing{background:#ffb547}
+.bar-buyback{background:#ff6b8a}
+.bar-partnerships{background:#a78bfa}
+
+@media(max-width:760px){
+
+/* ===== TOKENOMICS MOBILE ===== */
+
+#tokenomics{
+overflow:hidden;
+}
+
+#tokenomics .head{
+margin-bottom:18px;
+}
+
+#tokenomics .head h2{
+font-size:31px;
+line-height:1.08;
+letter-spacing:-1.2px;
+}
+
+#tokenomics .head p{
+font-size:13px;
+line-height:1.7;
+}
+
+/* diagram area */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.allocation-stats{
+width:100%;
+margin:15px 0 0;
+display:grid;
+gap:10px;
+}
+
+.allocation-stat{
+padding:13px 14px;
+border-radius:14px;
+}
+
+.allocation-stat-head{
+gap:8px;
+margin-bottom:8px;
+}
+
+.allocation-stat-head strong{
+font-size:13px;
+line-height:1.25;
+}
+
+.allocation-stat-head span{
+font-size:11px;
+}
+
+.allocation-bar{
+height:7px;
+}
+
+}
 .footer{display:flex;justify-content:space-between;gap:20px}.footer strong{color:#d1d2da}
 .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
 @keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
@@ -172,11 +296,116 @@ footer{border-top:1px solid #1b1d25;margin-top:90px;padding:32px 0;color:#696c78
 .navlinks{display:none}.hero{min-height:590px}.hero h1{letter-spacing:-2.5px}
 section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:1fr}
 .flow{grid-template-columns:1fr}.utilitygrid{grid-template-columns:1fr 1fr}
-.tokenlayout{grid-template-columns:1fr}.mechanism{grid-template-columns:1fr}
+
 .arrow{display:none}.roadmap{grid-template-columns:1fr 1fr}
-.tokenvisual{min-height:300px}.donut{width:245px;height:245px}.token-label{font-size:9px}.tl1{left:-2%}.tl5{left:-3%}.tl6{right:-3%}.footer{flex-direction:column;text-align:center}
-}
+
 @media(max-width:480px){.utilitygrid,.roadmap{grid-template-columns:1fr}.hero-content{padding:75px 0}.hero h1{font-size:48px}}
+
+
+
+
+
+
+
+/* ===== TOKENOMICS PERFECT DONUT ===== */
+
+#tokenomics .tokenvisual{
+  width:min(1100px,100%);
+  margin:45px auto 60px;
+}
+
+#tokenomics .tokenomics-svg{
+  display:block;
+  width:100%;
+  height:auto;
+  overflow:visible;
+}
+
+#tokenomics .donut-ring{
+  fill:none;
+  stroke-width:78;
+  transform:rotate(-90deg);
+  transform-origin:550px 280px;
+}
+
+#tokenomics .donut-base{
+  fill:none;
+  stroke:#171b26;
+  stroke-width:78;
+}
+
+#tokenomics .svg-percent{
+  fill:#fff;
+  font-family:inherit;
+  font-size:19px;
+  font-weight:900;
+  text-anchor:middle;
+  dominant-baseline:middle;
+  paint-order:stroke;
+  stroke:rgba(0,0,0,.35);
+  stroke-width:3px;
+}
+
+#tokenomics .svg-supply{
+  fill:#fff;
+  font-family:inherit;
+  font-size:27px;
+  font-weight:900;
+  text-anchor:middle;
+}
+
+#tokenomics .svg-total{
+  fill:rgba(255,255,255,.62);
+  font-family:inherit;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-anchor:middle;
+}
+
+#tokenomics .svg-label{
+  fill:#fff;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:700;
+}
+
+#tokenomics .svg-line{
+  fill:none;
+  stroke:rgba(255,255,255,.55);
+  stroke-width:1.5;
+}
+
+#tokenomics .svg-arrow{
+  fill:rgba(255,255,255,.65);
+}
+
+@media(max-width:760px){
+  #tokenomics .tokenvisual{
+    margin:30px auto 45px;
+  }
+
+  #tokenomics .svg-percent{
+    font-size:16px;
+  }
+
+  #tokenomics .svg-supply{
+    font-size:22px;
+  }
+
+  #tokenomics .svg-total{
+    font-size:9px;
+  }
+
+  #tokenomics .svg-label{
+    font-size:13px;
+  }
+
+  #tokenomics .svg-line{
+    stroke-width:1.3;
+  }
+}
+
 </style>
 </head>
 
@@ -313,24 +542,116 @@ buyback capacity and long-term ecosystem development.
 </p>
 </div>
 <div class="tokenlayout">
-<div class="tokenvisual">
-<div class="donut">
-<div class="inner"><strong>1,000,000,000</strong><span>HTP TOTAL SUPPLY</span></div>
+
+
+
+
+
+<div class="tokenvisual" style="position:relative;width:100%;max-width:700px;height:390px;margin:40px auto 55px;">
+
+  <div style="
+    position:absolute;
+    width:320px;
+    height:320px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:conic-gradient(
+      #7c5cff 0deg 144deg,
+      #21d4fd 144deg 216deg,
+      #36d399 216deg 270deg,
+      #ffb547 270deg 306deg,
+      #ff6b8a 306deg 342deg,
+      #a78bfa 342deg 360deg
+    );
+  ">
+
+    <div style="
+      position:absolute;
+      width:190px;
+      height:190px;
+      left:65px;
+      top:59.0px;
+      border-radius:50%;
+      background:#0b0d14;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    ">
+      <strong style="font-size:22px;line-height:1.1;">1,000,000,000</strong style="font-size:18px;font-weight:900;color:#fff;white-space:nowrap;">
+      HTP TOTAL SUPPLY
+    </div>
+
+    <b style="position:absolute;left:274.1px;top:122.9px;transform:translate(-50%,-50%);color:#fff;font-size:18px;font-weight:900;text-shadow:0 2px 5px rgba(0,0,0,.7);">40%</b>
+    <b style="position:absolute;left:160.0px;top:280.0px;transform:translate(-50%,-50%);color:#fff;font-size:18px;font-weight:900;text-shadow:0 2px 5px rgba(0,0,0,.7);">20%</b>
+    <b style="position:absolute;left:53.1px;top:214.5px;transform:translate(-50%,-50%);color:#fff;font-size:18px;font-weight:900;text-shadow:0 2px 5px rgba(0,0,0,.7);">15%</b>
+    <b style="position:absolute;left:45.9px;top:122.9px;transform:translate(-50%,-50%);color:#fff;font-size:18px;font-weight:900;text-shadow:0 2px 5px rgba(0,0,0,.7);">10%</b>
+    <b style="position:absolute;left:89.5px;top:62.9px;transform:translate(-50%,-50%);color:#fff;font-size:18px;font-weight:900;text-shadow:0 2px 5px rgba(0,0,0,.7);">10%</b>
+    <b style="position:absolute;left:141.2px;top:41.5px;transform:translate(-50%,-50%);color:#fff;font-size:18px;font-weight:900;text-shadow:0 2px 5px rgba(0,0,0,.7);">5%</b>
 </div>
-<div class="token-label tl1">40% Community</div>
-<div class="token-label tl2">20% Liquidity</div>
-<div class="token-label tl3">15% Treasury</div>
-<div class="token-label tl4">10% Marketing</div>
-<div class="token-label tl5">10% Buyback</div>
-<div class="token-label tl6">5% Partnerships</div>
+
 </div>
-<div class="rows">
-<div class="row"><div class="rname"><i class="rdot"></i>Community &amp; Ecosystem</div><strong>40% · 400M</strong></div>
-<div class="row"><div class="rname"><i class="rdot"></i>Buyback Reserve</div><strong>10% · 100M</strong></div>
-<div class="row"><div class="rname"><i class="rdot"></i>Liquidity</div><strong>20% · 200M</strong></div>
-<div class="row"><div class="rname"><i class="rdot"></i>Treasury</div><strong>15% · 150M</strong></div>
-<div class="row"><div class="rname"><i class="rdot"></i>Marketing &amp; Growth</div><strong>10% · 100M</strong></div>
-<div class="row"><div class="rname"><i class="rdot"></i>Partnerships &amp; Incentives</div><strong>5% · 50M</strong></div>
+
+<div class="allocation-stats">
+
+
+
+
+
+<div class="allocation-stat">
+<div class="allocation-stat-head">
+<strong>Community &amp; Ecosystem</strong>
+<span>40% · 400M</span>
+</div>
+<div class="allocation-bar"><i class="bar-community" style="width:40%"></i></div>
+</div>
+
+<div class="allocation-stat">
+<div class="allocation-stat-head">
+<strong>Liquidity</strong>
+<span>20% · 200M</span>
+</div>
+<div class="allocation-bar"><i class="bar-liquidity" style="width:20%"></i></div>
+</div>
+
+<div class="allocation-stat">
+<div class="allocation-stat-head">
+<strong>Treasury</strong>
+<span>15% · 150M</span>
+</div>
+<div class="allocation-bar"><i class="bar-treasury" style="width:15%"></i></div>
+</div>
+
+<div class="allocation-stat">
+<div class="allocation-stat-head">
+<strong>Marketing &amp; Growth</strong>
+<span>10% · 100M</span>
+</div>
+<div class="allocation-bar"><i class="bar-marketing" style="width:10%"></i></div>
+</div>
+
+<div class="allocation-stat">
+<div class="allocation-stat-head">
+<strong>Buyback Reserve</strong>
+<span>10% · 100M</span>
+</div>
+<div class="allocation-bar"><i class="bar-buyback" style="width:10%"></i></div>
+</div>
+
+<div class="allocation-stat">
+<div class="allocation-stat-head">
+<strong>Partnerships &amp; Incentives</strong>
+<span>5% · 50M</span>
+</div>
+<div class="allocation-bar"><i class="bar-partnerships" style="width:5%"></i></div>
+</div>
+
+</div>
+
+</div>
 </div>
 </div>
 </div>
