@@ -80,7 +80,7 @@ border:1px solid #20232d;border-radius:20px
 .head{max-width:720px;margin-bottom:43px}
 .center{text-align:center;margin-left:auto;margin-right:auto}
 .eyebrow{
-font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#927bff;font-weight:900;margin-bottom:10px
+font-size:13px;text-transform:uppercase;letter-spacing:2.8px;color:#a99bff;font-weight:900;margin-bottom:14px
 }
 .head h2{font-size:clamp(31px,5vw,48px);line-height:1.1;letter-spacing:-1.8px}
 .head p{margin-top:14px;color:#9295a1;font-size:14px;line-height:1.85}
@@ -102,17 +102,25 @@ display:flex;align-items:center;justify-content:center;margin:0 auto 17px;font-s
 .utilitygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
 .utility{padding:25px}.utility h3{font-size:16px;margin:15px 0 7px}.utility p{font-size:12px;color:#8e919c}
 .tokenlayout{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;align-items:center}
-.tokenvisual{display:flex;justify-content:center}
+.tokenvisual{display:flex;justify-content:center;align-items:center;position:relative;min-height:350px}
 .donut{
-width:280px;height:280px;border-radius:50%;
-background:conic-gradient(#8d75ff 0 40%,#54d9ff 40% 50%,#ffbd69 50% 70%,#65e6a5 70% 85%,#ff78ad 85% 95%,#7d8494 95% 100%);
-padding:30px;animation:scalein 1s ease both
+width:290px;height:290px;border-radius:50%;
+background:conic-gradient(#8d75ff 0 40%,#54d9ff 40% 60%,#ffbd69 60% 75%,#65e6a5 75% 85%,#ff78ad 85% 95%,#7d8494 95% 100%);
+padding:38px;animation:scalein 1s ease both;position:relative
 }
 .inner{
 width:100%;height:100%;border-radius:50%;background:#090a0f;border:1px solid #252833;
-display:flex;flex-direction:column;align-items:center;justify-content:center
+display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center
 }
-.inner strong{font-size:31px}.inner span{font-size:11px;color:#858894}
+.inner strong{font-size:22px;letter-spacing:-.8px;white-space:nowrap}
+.inner span{font-size:10px;color:#858894;margin-top:4px}
+.token-label{
+position:absolute;z-index:3;padding:6px 9px;border-radius:8px;
+background:#0d0f16e8;border:1px solid #292c37;font-size:10px;font-weight:900;
+box-shadow:0 8px 25px #0005;white-space:nowrap
+}
+.tl1{top:7%;left:2%}.tl2{top:2%;right:3%}.tl3{bottom:7%;right:0}
+.tl4{bottom:0;left:17%}.tl5{top:45%;left:-8%}.tl6{bottom:31%;right:-8%}
 .rows{display:grid;gap:10px}
 .row{
 display:flex;justify-content:space-between;align-items:center;padding:17px 19px;
@@ -156,7 +164,7 @@ section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:
 .flow{grid-template-columns:1fr}.utilitygrid{grid-template-columns:1fr 1fr}
 .tokenlayout{grid-template-columns:1fr}.mechanism{grid-template-columns:1fr}
 .arrow{display:none}.roadmap{grid-template-columns:1fr 1fr}
-.donut{width:235px;height:235px}.footer{flex-direction:column;text-align:center}
+.tokenvisual{min-height:300px}.donut{width:245px;height:245px}.token-label{font-size:9px}.tl1{left:-2%}.tl5{left:-3%}.tl6{right:-3%}.footer{flex-direction:column;text-align:center}
 }
 @media(max-width:480px){.utilitygrid,.roadmap{grid-template-columns:1fr}.hero-content{padding:75px 0}.hero h1{font-size:48px}}
 </style>
@@ -207,9 +215,9 @@ participate in the community and help turn everyday interactions into meaningful
 <section class="stats">
 <div class="container">
 <div class="statgrid">
-<div class="card stat"><strong>1,000,000,000</strong><span>Initial HTP total supply</span></div>
-<div class="card stat"><strong>10%</strong><span>Buyback reserve allocation</span></div>
-<div class="card stat"><strong>0%</strong><span>Dedicated developer token allocation</span></div>
+<div class="card stat"><strong>1,000,000,000</strong><span>Fixed initial HTP supply</span></div>
+<div class="card stat"><strong>40%</strong><span>Community &amp; ecosystem allocation</span></div>
+<div class="card stat"><strong>20%</strong><span>Liquidity allocation</span></div>
 </div>
 </div>
 </section>
@@ -295,7 +303,17 @@ buyback capacity and long-term ecosystem development.
 </p>
 </div>
 <div class="tokenlayout">
-<div class="tokenvisual"><div class="donut"><div class="inner"><strong>1,000,000,000</strong><span>HTP Total Supply</span></div></div></div>
+<div class="tokenvisual">
+<div class="donut">
+<div class="inner"><strong>1,000,000,000</strong><span>HTP TOTAL SUPPLY</span></div>
+</div>
+<div class="token-label tl1">40% Community</div>
+<div class="token-label tl2">20% Liquidity</div>
+<div class="token-label tl3">15% Treasury</div>
+<div class="token-label tl4">10% Marketing</div>
+<div class="token-label tl5">10% Buyback</div>
+<div class="token-label tl6">5% Partnerships</div>
+</div>
 <div class="rows">
 <div class="row"><div class="rname"><i class="rdot"></i>Community &amp; Ecosystem</div><strong>40% · 400M</strong></div>
 <div class="row"><div class="rname"><i class="rdot"></i>Buyback Reserve</div><strong>10% · 100M</strong></div>
@@ -381,6 +399,68 @@ eligible ecosystem activity and long-term supply reduction.
 </div>
 </section>
 
+<section id="distribution">
+<div class="container">
+<div class="head center">
+<div class="eyebrow">Distribution &amp; Vesting</div>
+<h2>Designed for responsible token distribution.</h2>
+<p>
+Token allocation and release schedules should be transparent before tokens
+enter circulation. HappyTip separates allocation from vesting so the community
+can clearly distinguish where HTP is allocated and when it becomes available.
+</p>
+</div>
+
+<div class="two">
+<div class="card info reveal">
+<div class="icon">TGE</div>
+<h3>Token Generation Event</h3>
+<p>
+The TGE marks the point at which HTP distribution and initial circulating
+supply are activated according to the officially disclosed launch structure.
+</p>
+</div>
+
+<div class="card info reveal">
+<div class="icon">01</div>
+<h3>Cliff</h3>
+<p>
+Any applicable cliff period will be publicly disclosed for the relevant
+allocation before the associated tokens become eligible for release.
+</p>
+</div>
+
+<div class="card info reveal">
+<div class="icon">02</div>
+<h3>Vesting</h3>
+<p>
+Where vesting applies, tokens can be released according to a predefined
+schedule rather than becoming immediately available. Exact schedules will
+be published with the official allocation details.
+</p>
+</div>
+
+<div class="card info reveal">
+<div class="icon">03</div>
+<h3>Airdrop</h3>
+<p>
+Airdrop eligibility, snapshot rules, claim timing and allocation conditions
+will be announced separately. No unannounced airdrop amount is assumed here.
+</p>
+</div>
+</div>
+
+<div class="card info reveal" style="margin-top:18px;text-align:center">
+<div class="icon" style="margin-left:auto;margin-right:auto">TBA</div>
+<h3>Release Schedule</h3>
+<p>
+Exact TGE, cliff and vesting percentages should be published before launch.
+This page intentionally avoids presenting unconfirmed release numbers as official facts.
+</p>
+</div>
+</div>
+</section>
+
 <section id="roadmap">
 <div class="container">
 <div class="head center">
@@ -409,7 +489,11 @@ and verifiable rather than hidden behind vague promises.
 </div>
 <div class="transparency">
 <div class="card info"><div class="icon">01</div><h3>On-chain verification</h3><p>Relevant token, liquidity, buyback and burn transactions will be publicly verifiable once the associated infrastructure is active.</p></div>
-<div class="card info"><div class="icon">02</div><h3>No dedicated developer allocation</h3><p>No dedicated developer token allocation is currently planned. Any future change to the allocation structure should be publicly disclosed together with applicable conditions.</p></div>
+<div class="card info"><div class="icon">02</div><h3>Developer Allocation</h3><p>
+The current tokenomics assigns <strong>0%</strong> as a dedicated developer token allocation.
+Any future change to this structure should be publicly disclosed together with the
+applicable allocation, vesting and release conditions.
+</p></div>
 </div>
 </div>
 </section>
