@@ -11,17 +11,22 @@
 html{scroll-behavior:smooth}
 body{
 font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:#07080d;color:#f7f7fb;line-height:1.7;overflow-x:hidden
+background:
+radial-gradient(circle at 15% 8%,rgba(125,92,255,.16),transparent 28%),
+radial-gradient(circle at 88% 18%,rgba(46,207,255,.10),transparent 25%),
+radial-gradient(circle at 50% 78%,rgba(125,92,255,.07),transparent 30%),
+linear-gradient(135deg,#080b12 0%,#0d111a 42%,#090d15 100%);
+color:#f7f7fb;line-height:1.7;overflow-x:hidden
 }
 body:before,body:after{
 content:"";position:fixed;border-radius:50%;pointer-events:none;z-index:-1;filter:blur(90px)
 }
-body:before{width:380px;height:380px;background:#765cff;opacity:.12;top:-180px;left:-140px}
-body:after{width:420px;height:420px;background:#18cfff;opacity:.07;right:-180px;bottom:-160px}
+body:before{width:380px;height:380px;background:#765cff;opacity:.14;top:-180px;left:-140px}
+body:after{width:420px;height:420px;background:#18cfff;opacity:.08;right:-180px;bottom:-160px}
 a{text-decoration:none;color:inherit}
 .container{width:min(1120px,92%);margin:auto}
 header{
-position:sticky;top:0;z-index:50;background:rgba(7,8,13,.78);
+position:sticky;top:0;z-index:50;background:rgba(9,12,18,.72);
 backdrop-filter:blur(18px);border-bottom:1px solid #1d2029
 }
 .nav{height:74px;display:flex;align-items:center;justify-content:space-between}
@@ -38,7 +43,9 @@ min-height:650px;display:flex;align-items:center;text-align:center;position:rela
 }
 .grid{
 position:absolute;inset:0;opacity:.45;
-background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);
+background-image:
+linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
 background-size:55px 55px;
 mask-image:linear-gradient(to bottom,#000,transparent)
 }
@@ -109,14 +116,15 @@ background:conic-gradient(#8d75ff 0 40%,#54d9ff 40% 60%,#ffbd69 60% 75%,#65e6a5 
 padding:38px;animation:scalein 1s ease both;position:relative
 }
 .inner{
-width:100%;height:100%;border-radius:50%;background:#090a0f;border:1px solid #252833;
+width:100%;height:100%;border-radius:50%;background:
+linear-gradient(145deg,#151a25,#0f131c);border:1px solid #252833;
 display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center
 }
 .inner strong{font-size:22px;letter-spacing:-.8px;white-space:nowrap}
 .inner span{font-size:10px;color:#858894;margin-top:4px}
 .token-label{
 position:absolute;z-index:3;padding:6px 9px;border-radius:8px;
-background:#0d0f16e8;border:1px solid #292c37;font-size:10px;font-weight:900;
+background:#171a23ee;border:1px solid #292c37;font-size:10px;font-weight:900;
 box-shadow:0 8px 25px #0005;white-space:nowrap
 }
 .tl1{top:7%;left:2%}.tl2{top:2%;right:3%}.tl3{bottom:7%;right:0}
@@ -124,7 +132,8 @@ box-shadow:0 8px 25px #0005;white-space:nowrap
 .rows{display:grid;gap:10px}
 .row{
 display:flex;justify-content:space-between;align-items:center;padding:17px 19px;
-background:#0e1017;border:1px solid #20232d;border-radius:14px
+background:
+linear-gradient(145deg,rgba(24,28,40,.92),rgba(14,17,25,.92));border:1px solid #20232d;border-radius:14px
 }
 .rname{display:flex;align-items:center;gap:9px;font-size:13px}.rdot{width:9px;height:9px;border-radius:50%;background:#8d75ff}
 .row strong{font-size:13px}
@@ -147,7 +156,8 @@ background:#8d75ff;filter:blur(80px);opacity:.15
 .phase{padding:25px}.phase b{font-size:10px;color:#927bff;letter-spacing:1px}.phase h3{margin:9px 0;font-size:17px}.phase p{font-size:12px;color:#8e919d}
 .transparency{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .faq{display:grid;gap:10px}
-details{background:#0e1017;border:1px solid #20232d;border-radius:14px;padding:18px 20px}
+details{background:
+linear-gradient(145deg,rgba(24,28,40,.92),rgba(14,17,25,.92));border:1px solid #20232d;border-radius:14px;padding:18px 20px}
 summary{cursor:pointer;font-weight:750;font-size:13px}
 details p{color:#8f929d;font-size:12px;margin-top:10px;line-height:1.8}
 .community{text-align:center;padding:75px 25px;border:1px solid #2b2440;border-radius:25px;background:radial-gradient(circle at 50% 0,#8d75ff18,transparent 58%),#0d0f15}
