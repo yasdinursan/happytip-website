@@ -17704,3 +17704,49 @@ document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
   }
 }
 </style>
+
+<style>
+/* ============================================================
+   HIDE EXTRA LONG MODULES ON MOBILE (BINANCE CLEAN STYLE)
+   ============================================================ */
+@media screen and (max-width: 768px) {
+
+  /* 1. Sembunyikan section duplikat/engine ekstra di mobile agar tidak scroll panjang */
+  .market-engine-section,
+  .live-simulation-section,
+  .paper-portfolio-section,
+  #htpMarketEngine,
+  #liveSimulation,
+  div[id*="Engine"],
+  div[id*="Simulation"],
+  div[class*="engine-v2"],
+  div[class*="market-intelligence"] {
+    display: none !important;
+  }
+
+  /* 2. Batasi tinggi Order Book agar tidak memanjang (Max 6 baris + Scroll internal) */
+  .htp-orderbook {
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 6px !important;
+    padding: 6px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* 3. Buat Chart Pas di Layar HP (Tinggi 240px) */
+  .htp-chart {
+    height: 240px !important;
+  }
+
+  /* 4. Buat Form Buy / Sell Sticky Rapi di Bawah */
+  .htp-terminal-trade {
+    position: sticky !important;
+    bottom: 0 !important;
+    background-color: #0b0e11 !important; /* Binance dark bg */
+    padding: 8px 0 !important;
+    z-index: 99 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+</style>
