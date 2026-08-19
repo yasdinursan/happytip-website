@@ -17258,3 +17258,176 @@ document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
 }
 </style>
+
+<style>
+/* =========================================================
+   HTP MARKET — MOBILE HORIZONTAL TERMINAL
+   Keep desktop market geometry on small screens.
+   Horizontal scroll, no vertical stacking.
+   ========================================================= */
+
+@media (max-width: 768px){
+
+  html,
+  body{
+    overflow-x:hidden !important;
+  }
+
+  #htpTradingTerminal{
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    box-sizing:border-box !important;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /*
+   * Terminal content keeps a controlled desktop-style width.
+   * User can swipe horizontally on Android.
+   */
+  #htpTradingTerminal > *{
+    min-width:980px;
+  }
+
+  /* TOP */
+  .htp-terminal-top{
+    display:flex !important;
+    flex-direction:column !important;
+    min-width:980px !important;
+  }
+
+  .htp-terminal-stats{
+    display:grid !important;
+    grid-template-columns:
+      repeat(5,1fr) !important;
+    gap:10px !important;
+    width:100% !important;
+  }
+
+  /* MAIN MARKET */
+  .htp-terminal-main{
+    display:grid !important;
+
+    /*
+     * Chart + order book stay side by side.
+     */
+    grid-template-columns:
+      minmax(650px,1fr)
+      300px !important;
+
+    gap:14px !important;
+
+    width:980px !important;
+    min-width:980px !important;
+  }
+
+  .htp-chart-panel{
+    min-width:650px !important;
+  }
+
+  .htp-chart{
+    width:100% !important;
+    height:300px !important;
+  }
+
+  .htp-chart svg{
+    width:100% !important;
+    height:100% !important;
+  }
+
+  /* ORDER BOOK */
+  .htp-orderbook{
+    width:300px !important;
+    min-width:300px !important;
+  }
+
+  /* TIMEFRAMES */
+  .htp-timeframes{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    overflow:hidden !important;
+    white-space:nowrap !important;
+  }
+
+  .htp-timeframes button{
+    flex:0 0 auto !important;
+  }
+
+  /* BUY / SELL SIDE BY SIDE */
+  .htp-terminal-trade{
+    min-width:980px !important;
+  }
+
+  .htp-trade-grid{
+    display:grid !important;
+    grid-template-columns:
+      1fr 1fr !important;
+    gap:14px !important;
+  }
+
+  .htp-trade-side{
+    min-width:0 !important;
+  }
+
+  /* TABS */
+  .htp-terminal-tabs{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    white-space:nowrap !important;
+    min-width:980px !important;
+    overflow:hidden !important;
+  }
+
+  .htp-terminal-tabs span{
+    flex:0 0 auto !important;
+  }
+
+  /* PORTFOLIO */
+  .htp-portfolio-v270{
+    min-width:980px !important;
+  }
+
+  .htp-portfolio-grid{
+    grid-template-columns:
+      repeat(4,1fr) !important;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width:480px){
+
+  #htpTradingTerminal > *{
+    min-width:920px;
+  }
+
+  .htp-terminal-main{
+    width:920px !important;
+    min-width:920px !important;
+
+    grid-template-columns:
+      minmax(620px,1fr)
+      280px !important;
+  }
+
+  .htp-chart-panel{
+    min-width:620px !important;
+  }
+
+  .htp-orderbook{
+    width:280px !important;
+    min-width:280px !important;
+  }
+
+  .htp-terminal-trade,
+  .htp-terminal-tabs,
+  .htp-portfolio-v270{
+    min-width:920px !important;
+  }
+
+}
+</style>
