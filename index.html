@@ -2080,6 +2080,127 @@ section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:
 
 </style>
 
+
+<style id="HAPPYTIP-MOBILE-HIDE-MARKET-COINS">
+
+@media screen and (max-width: 768px) {
+
+  /* KATEGORI TETAP TAMPIL */
+  #market .market-tabs {
+    display: flex !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* SEMUA KARTU COIN DI MARKET UTAMA HILANG DI MOBILE */
+  #market .market-grid {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #market .market-grid .market-card {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+}
+
+@media screen and (max-width: 430px) {
+
+  #market .market-grid {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+}
+
+</style>
+
+
+<style id="HAPPYTIP-MOBILE-MARKET-SEARCH-POSITION">
+
+@media screen and (max-width: 768px) {
+
+  /* 4 kategori tetap satu baris */
+  #market .market-tabs {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Search turun ke baris berikutnya */
+  #market .market-tabs::after {
+    content: "🔍  Search coin / pair" !important;
+
+    display: block !important;
+    position: absolute !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    top: calc(100% + 8px) !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 40px !important;
+    line-height: 40px !important;
+
+    padding: 0 13px !important;
+    box-sizing: border-box !important;
+
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 9px !important;
+    background: rgba(255,255,255,.045) !important;
+
+    color: rgba(255,255,255,.55) !important;
+    font-size: 12px !important;
+
+    pointer-events: none !important;
+  }
+
+  /* Jadikan parent sebagai anchor search */
+  #market .market-tabs {
+    position: relative !important;
+    padding-bottom: 48px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+}
+
+@media screen and (max-width: 430px) {
+
+  #market .market-tabs {
+    gap: 5px !important;
+    padding-bottom: 48px !important;
+  }
+
+  #market .market-tabs::after {
+    top: calc(100% + 7px) !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    font-size: 11px !important;
+  }
+
+}
+
+</style>
+
 </head>
 
 <body>
