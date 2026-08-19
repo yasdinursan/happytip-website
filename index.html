@@ -17943,3 +17943,60 @@ div[id*="paperPortfolio"] {
   }
 }
 </style>
+
+<style>
+/* ============================================================
+   FIX LAYOUT: 1 CHART + SEARCH ATAS + TAB NAVIGATION BAWAH
+   ============================================================ */
+@media screen and (max-width: 768px) {
+
+  /* 1. Sembunyikan Chart ke-2 & Simulasi Ekstra */
+  .live-simulation-section,
+  .market-engine-section,
+  .paper-portfolio-section,
+  #liveSimulation,
+  #htpMarketEngine,
+  div[id*="Simulation"],
+  div[class*="engine-v2"] {
+    display: none !important;
+  }
+
+  /* 2. Header Top: Search Koin & Pair Info */
+  .htp-terminal-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 6px 8px !important;
+  }
+
+  /* 3. Hanya 1 Chart di Atas (Tinggi Kompak 220px) */
+  .htp-chart-panel {
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+
+  .htp-chart {
+    width: 100% !important;
+    height: 220px !important;
+  }
+
+  /* 4. Form Order (Buy/Sell) & Order Book Compact */
+  .htp-terminal-main {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  /* Form Order (Beli/Jual) berdampingan rapi */
+  .htp-trade-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .htp-orderbook {
+    max-height: 220px !important;
+    overflow-y: auto !important;
+  }
+}
+</style>
