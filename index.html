@@ -1503,6 +1503,402 @@ section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:
 }
 </style>
 
+
+<style id="happytip-auto-binance-mobile">
+
+/* =========================================================
+   HAPPYTIP — AUTO BINANCE MOBILE
+   CSS ONLY
+   Tidak mengubah HTML / JS / trading engine
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* ===============================
+     MAIN TERMINAL
+     =============================== */
+
+  #htpTradingTerminal,
+  .htp-terminal {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+  }
+
+  #htpTradingTerminal *,
+  .htp-terminal * {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* ===============================
+     HEADER / PAIR
+     =============================== */
+
+  .htp-terminal-top {
+    width: 100% !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  .htp-terminal-pair {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .htp-terminal-pair h3 {
+    margin: 0 !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+
+  .htp-live-badge {
+    font-size: 9px !important;
+    padding: 3px 5px !important;
+  }
+
+  /* Stats seperti header exchange */
+  .htp-terminal-stats {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(70px, 1fr)) !important;
+    gap: 4px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  .htp-terminal-stats::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .htp-terminal-stat {
+    min-width: 70px !important;
+    padding: 4px !important;
+  }
+
+  .htp-terminal-stat span {
+    display: block !important;
+    font-size: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  .htp-terminal-stat strong {
+    display: block !important;
+    font-size: 10px !important;
+    white-space: nowrap !important;
+  }
+
+  /* ===============================
+     MAIN MARKET
+     CHART → ORDER BOOK
+     =============================== */
+
+  .htp-terminal-main {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    gap: 6px !important;
+  }
+
+  /* ===============================
+     CHART
+     =============================== */
+
+  .htp-chart-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .htp-chart-header {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 4px !important;
+  }
+
+  .htp-chart-header > strong {
+    font-size: 11px !important;
+  }
+
+  /* Timeframe satu baris */
+  .htp-timeframes {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 2px !important;
+    scrollbar-width: none !important;
+  }
+
+  .htp-timeframes::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .htp-timeframes button {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    padding: 4px 8px !important;
+    font-size: 9px !important;
+    white-space: nowrap !important;
+  }
+
+  .htp-chart {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: 225px !important;
+    min-height: 225px !important;
+    max-height: 225px !important;
+    overflow: hidden !important;
+  }
+
+  .htp-chart svg,
+  .htp-chart canvas {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* ===============================
+     ORDER BOOK
+     =============================== */
+
+  .htp-orderbook {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: 205px !important;
+    max-height: 205px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 5px !important;
+  }
+
+  .htp-orderbook h4 {
+    margin: 2px 0 5px !important;
+    font-size: 11px !important;
+  }
+
+  .htp-order-columns,
+  .htp-order-row {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px !important;
+    padding: 2px 3px !important;
+    font-size: 9px !important;
+    line-height: 1.25 !important;
+  }
+
+  .htp-order-columns span,
+  .htp-order-row span {
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+
+  .htp-last-price {
+    padding: 4px !important;
+    font-size: 11px !important;
+    text-align: center !important;
+  }
+
+  /* ===============================
+     BUY / SELL
+     Compact 2 kolom
+     =============================== */
+
+  .htp-terminal-trade {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-top: 4px !important;
+    padding: 5px !important;
+  }
+
+  .htp-trade-balance {
+    font-size: 9px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .htp-trade-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 5px !important;
+    width: 100% !important;
+  }
+
+  .htp-trade-side {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 5px !important;
+  }
+
+  .htp-trade-side h4 {
+    font-size: 10px !important;
+    margin: 0 0 4px !important;
+  }
+
+  .htp-trade-side label {
+    display: block !important;
+    font-size: 8px !important;
+    margin-top: 3px !important;
+  }
+
+  .htp-trade-input,
+  .htp-terminal input,
+  .htp-terminal select {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 32px !important;
+    padding: 4px 6px !important;
+    font-size: 10px !important;
+  }
+
+  .htp-trade-button,
+  .htp-buy-button,
+  .htp-sell-button {
+    width: 100% !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 4px !important;
+    margin-top: 5px !important;
+    font-size: 10px !important;
+    white-space: nowrap !important;
+  }
+
+  /* ===============================
+     TABS
+     =============================== */
+
+  .htp-terminal-tabs {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 5px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+    padding: 4px 0 !important;
+  }
+
+  .htp-terminal-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .htp-terminal-tabs span {
+    flex: 0 0 auto !important;
+    padding: 5px 8px !important;
+    font-size: 9px !important;
+  }
+
+  /* =====================================================
+     HIDE DUPLICATE LOWER MARKET UI
+     HANYA MOBILE
+     ===================================================== */
+
+  #htpTradingTerminal ~ .card {
+    display: none !important;
+  }
+
+  .market-engine-section,
+  .live-simulation-section,
+  .paper-portfolio-section,
+  #htpMarketEngine,
+  #liveSimulation,
+  #paperPortfolio,
+  #simulatedTrading,
+  #paperTrading {
+    display: none !important;
+  }
+
+  /* Elemen simulasi lama di luar terminal */
+  .v24-simulation,
+  .v25-chart,
+  .v28-chart-wrap,
+  .v28-orderbook,
+  .htp-orderbook-live {
+    display: none !important;
+  }
+}
+
+
+/* =========================================================
+   360–430px
+   ========================================================= */
+
+@media screen and (max-width: 430px) {
+
+  #htpTradingTerminal,
+  .htp-terminal {
+    padding: 5px !important;
+  }
+
+  .htp-terminal-stats {
+    grid-template-columns: repeat(5, 78px) !important;
+  }
+
+  .htp-chart {
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 220px !important;
+  }
+
+  .htp-orderbook {
+    height: 190px !important;
+    max-height: 190px !important;
+  }
+
+  .htp-trade-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .htp-trade-side {
+    padding: 4px !important;
+  }
+
+  .htp-trade-input {
+    height: 30px !important;
+    font-size: 9px !important;
+  }
+
+  .htp-trade-button,
+  .htp-buy-button,
+  .htp-sell-button {
+    height: 32px !important;
+    min-height: 32px !important;
+    font-size: 9px !important;
+  }
+}
+
+</style>
+
 </head>
 
 <body>
