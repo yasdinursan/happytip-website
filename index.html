@@ -17915,3 +17915,31 @@ div[id*="paperPortfolio"] {
 
 </script>
 
+
+<style>
+/* ============================================================
+   FIX STEP 1: TOGGLE / SINGLE BUY-SELL FORM ON MOBILE
+   ============================================================ */
+@media screen and (max-width: 768px) {
+
+  /* Buat container form trade menjadi single column */
+  .htp-trade-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* Secara default di mobile, jika kedua form bertumpuk, 
+     kita pastikan form kedua disembunyikan atau hanya form yang aktif saja yang tampil */
+  .htp-trade-side:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Jika pengguna mengklik Sell atau class aktif berpindah, atur display-nya */
+  .htp-trade-side.active,
+  .htp-trade-side:first-child {
+    display: block !important;
+    width: 100% !important;
+  }
+}
+</style>
