@@ -1899,6 +1899,187 @@ section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:
 
 </style>
 
+
+<style id="happytip-market-selector-mobile-clean">
+
+/*
+ * HAPPYTIP MARKET SELECTOR MOBILE CLEAN
+ *
+ * CSS ONLY
+ * Tidak mengubah:
+ * - HTML ID
+ * - HTML class
+ * - JavaScript
+ * - event listener
+ * - trading engine
+ * - API
+ */
+
+@media screen and (max-width: 768px) {
+
+  /*
+   * Kategori market tetap tampil.
+   * Daftar pair/koin di bawah selector disembunyikan
+   * agar tidak memenuhi halaman.
+   */
+
+  .market-tabs,
+  .market-categories,
+  .market-category-tabs {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+  }
+
+  .market-tabs::-webkit-scrollbar,
+  .market-categories::-webkit-scrollbar,
+  .market-category-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /*
+   * Jangan tampilkan daftar asset secara permanen.
+   *
+   * Selector ini sengaja memakai class umum yang kemungkinan
+   * dipakai oleh UI market-list, bukan ID trading engine.
+   */
+
+  .market-list,
+  .market-assets,
+  .market-pairs,
+  .coin-list,
+  .pair-list,
+  .asset-list {
+    display: none !important;
+  }
+
+  /*
+   * Search input tetap boleh tampil kalau memang sudah
+   * disediakan oleh HTML existing.
+   */
+
+  .market-search,
+  .market-search-box,
+  .coin-search,
+  .pair-search,
+  input[placeholder*="Search"],
+  input[placeholder*="search"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+}
+
+
+/* =========================================
+   360–430px
+   ========================================= */
+
+@media screen and (max-width: 430px) {
+
+  .market-tabs,
+  .market-categories,
+  .market-category-tabs {
+    gap: 5px !important;
+    padding: 4px 0 !important;
+  }
+
+  .market-tabs button,
+  .market-categories button,
+  .market-category-tabs button {
+    flex: 0 0 auto !important;
+    font-size: 10px !important;
+    padding: 5px 8px !important;
+    white-space: nowrap !important;
+  }
+
+}
+
+</style>
+
+
+<style id="happytip-mobile-market-search">
+
+/* ============================================================
+   HAPPYTIP MOBILE MARKET SEARCH V1
+   CSS ONLY — tidak mengubah trading engine / JS / ID / class
+   ============================================================ */
+
+@media screen and (max-width: 768px) {
+
+  /* Kategori tetap horizontal seperti exchange */
+  .market-tabs {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+    margin: 10px 0 8px !important;
+  }
+
+  .market-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .market-tab {
+    flex: 0 0 auto !important;
+    padding: 7px 11px !important;
+    font-size: 11px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Daftar coin asli tidak ditampilkan sebagai grid panjang */
+  .market-grid {
+    display: none !important;
+  }
+
+  /* Buat area search exchange */
+  .market-tabs::after {
+    content: "🔍  Search coin / pair";
+    display: block !important;
+    flex: 0 0 auto !important;
+    min-width: 145px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 8px !important;
+    background: rgba(255,255,255,.04) !important;
+    color: rgba(255,255,255,.55) !important;
+    font-size: 11px !important;
+  }
+
+}
+
+@media screen and (max-width: 430px) {
+
+  .market-tabs {
+    gap: 5px !important;
+    margin-top: 8px !important;
+  }
+
+  .market-tab {
+    font-size: 10px !important;
+    padding: 6px 9px !important;
+  }
+
+  .market-tabs::after {
+    min-width: 135px !important;
+    font-size: 10px !important;
+  }
+
+}
+
+</style>
+
 </head>
 
 <body>
