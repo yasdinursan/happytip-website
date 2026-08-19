@@ -17045,3 +17045,216 @@ document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
 })();
 </script>
+
+<style>
+/* ===== HTP MOBILE MARKET UI FIX ===== */
+
+@media (max-width: 768px){
+
+  /* Jangan biarkan container market memaksa lebar desktop */
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  #htpTradingTerminal{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box;
+    margin:0 !important;
+    padding:12px !important;
+    overflow:hidden;
+  }
+
+  /* Header terminal */
+  .htp-terminal-top{
+    display:block !important;
+  }
+
+  .htp-terminal-pair{
+    margin-bottom:12px;
+  }
+
+  .htp-terminal-stats{
+    display:grid !important;
+    grid-template-columns:
+      repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+  }
+
+  .htp-terminal-stat{
+    min-width:0 !important;
+    overflow:hidden;
+  }
+
+  /* Chart + Order Book */
+  .htp-terminal-main{
+    display:block !important;
+    width:100% !important;
+  }
+
+  .htp-chart-panel,
+  .htp-orderbook{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box;
+  }
+
+  .htp-chart-panel{
+    margin-bottom:12px;
+  }
+
+  .htp-chart{
+    width:100% !important;
+    height:220px !important;
+    overflow:hidden;
+  }
+
+  .htp-chart svg{
+    width:100% !important;
+    height:100% !important;
+  }
+
+  .htp-timeframes{
+    display:flex !important;
+    gap:4px !important;
+    overflow-x:auto !important;
+    max-width:100%;
+    scrollbar-width:none;
+  }
+
+  .htp-timeframes::-webkit-scrollbar{
+    display:none;
+  }
+
+  .htp-timeframes button{
+    flex:0 0 auto !important;
+    padding:5px 8px !important;
+    font-size:11px !important;
+  }
+
+  /* Order book dibuat compact */
+  .htp-orderbook{
+    max-height:270px;
+    overflow:hidden;
+  }
+
+  .htp-order-row,
+  .htp-order-columns{
+    grid-template-columns:1fr 1fr !important;
+    font-size:11px !important;
+  }
+
+  /* Buy / Sell */
+  .htp-terminal-trade{
+    width:100% !important;
+    box-sizing:border-box;
+  }
+
+  .htp-trade-grid{
+    display:grid !important;
+    grid-template-columns:
+      1fr 1fr !important;
+    gap:8px !important;
+  }
+
+  .htp-trade-side{
+    min-width:0 !important;
+    padding:10px !important;
+  }
+
+  .htp-trade-input{
+    width:100% !important;
+    box-sizing:border-box;
+    font-size:12px !important;
+  }
+
+  .htp-trade-button{
+    width:100% !important;
+    font-size:12px !important;
+    padding:9px 5px !important;
+  }
+
+  /* Tabs tetap satu baris dan bisa digeser */
+  .htp-terminal-tabs{
+    display:flex !important;
+    width:100% !important;
+    overflow-x:auto !important;
+    white-space:nowrap !important;
+    gap:18px !important;
+    scrollbar-width:none;
+  }
+
+  .htp-terminal-tabs::-webkit-scrollbar{
+    display:none;
+  }
+
+  .htp-terminal-tabs span{
+    flex:0 0 auto !important;
+    font-size:11px !important;
+  }
+
+  /* Portfolio */
+  .htp-portfolio-v270{
+    width:100% !important;
+    box-sizing:border-box;
+  }
+
+  .htp-portfolio-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr)) !important;
+  }
+
+  /* Hindari elemen panjang memaksa horizontal scroll */
+  #htpTradingTerminal *{
+    max-width:100%;
+    box-sizing:border-box;
+  }
+
+}
+
+/* HP kecil */
+@media (max-width:480px){
+
+  #htpTradingTerminal{
+    padding:9px !important;
+  }
+
+  .htp-terminal-stats{
+    gap:6px !important;
+  }
+
+  .htp-terminal-stat{
+    padding:7px !important;
+    font-size:10px !important;
+  }
+
+  .htp-terminal-stat strong{
+    font-size:12px !important;
+  }
+
+  .htp-chart{
+    height:190px !important;
+  }
+
+  .htp-trade-grid{
+    gap:6px !important;
+  }
+
+  .htp-trade-side{
+    padding:8px !important;
+  }
+
+  .htp-trade-side h4{
+    font-size:12px !important;
+  }
+
+  .htp-orderbook{
+    max-height:240px;
+  }
+
+}
+</style>
