@@ -2164,6 +2164,85 @@ section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:
 
 </style>
 
+
+
+<style id="HAPPYTIP-MOBILE-MARKET-CLEANUP">
+
+@media screen and (max-width: 768px) {
+
+  /*
+   * MOBILE MARKET:
+   * Tampilkan hanya kategori + search.
+   * Daftar coin/card tidak ditampilkan.
+   */
+
+  #market .market-grid {
+    display: none !important;
+  }
+
+  #market .market-list,
+  #market .market-assets,
+  #market .market-pairs,
+  #market .coin-list,
+  #market .pair-list,
+  #market .asset-list {
+    display: none !important;
+  }
+
+  /*
+   * Hapus pair selector/header tambahan yang muncul
+   * sebelum chart terminal.
+   */
+  #htpTradingTerminal .htp-terminal-pair {
+    display: none !important;
+  }
+
+  #htpTradingTerminal .htp-live-badge {
+    display: none !important;
+  }
+
+  /*
+   * Search tetap di luar 4 kategori.
+   */
+  #market [data-happytip-mobile-search="true"] {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 40px !important;
+    margin: 0 0 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  /*
+   * Jangan biarkan selector coin/pair tersembunyi
+   * membuat ruang kosong.
+   */
+  #market .market-grid,
+  #market .market-list,
+  #market .market-assets,
+  #market .market-pairs,
+  #market .coin-list,
+  #market .pair-list,
+  #market .asset-list {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+  }
+
+}
+
+@media screen and (max-width: 430px) {
+
+  #market [data-happytip-mobile-search="true"] {
+    height: 38px !important;
+    margin-bottom: 12px !important;
+  }
+
+}
+
+</style>
+
 </head>
 
 <body>
@@ -19391,4 +19470,106 @@ div[id*="paperPortfolio"] {
   }
 }
 
+</style>
+
+<style id="HAPPYTIP-HEADER-3COL-FIX">
+/* ===== HTP MARKET HEADER — 3 COLUMN ===== */
+
+.htp-terminal-stats{
+  display:grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap:0 !important;
+  margin-top:18px !important;
+  width:100% !important;
+  overflow:visible !important;
+}
+
+.htp-terminal-stat{
+  min-width:0 !important;
+  padding:0 12px !important;
+  box-sizing:border-box !important;
+}
+
+.htp-terminal-stat:nth-child(1){
+  grid-column:1;
+  grid-row:1 / span 2;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+
+.htp-terminal-stat:nth-child(2){
+  grid-column:2;
+  grid-row:1;
+}
+
+.htp-terminal-stat:nth-child(3){
+  grid-column:2;
+  grid-row:2;
+  margin-top:10px;
+}
+
+.htp-terminal-stat:nth-child(4){
+  grid-column:3;
+  grid-row:2;
+  margin-top:10px;
+}
+
+.htp-terminal-stat:nth-child(5){
+  grid-column:3;
+  grid-row:1;
+}
+
+.htp-terminal-stat:nth-child(1) span{
+  font-size:11px !important;
+}
+
+.htp-terminal-stat:nth-child(1) strong{
+  font-size:24px !important;
+  margin-top:8px !important;
+}
+
+.htp-terminal-stat:nth-child(2),
+.htp-terminal-stat:nth-child(3),
+.htp-terminal-stat:nth-child(4),
+.htp-terminal-stat:nth-child(5){
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  align-content:start !important;
+}
+
+.htp-terminal-stat span{
+  display:block !important;
+  font-size:11px !important;
+  white-space:nowrap !important;
+}
+
+.htp-terminal-stat strong{
+  display:block !important;
+  font-size:14px !important;
+  white-space:nowrap !important;
+  margin-top:4px !important;
+}
+
+@media(max-width:650px){
+  .htp-terminal-stats{
+    grid-template-columns: 1fr 1fr 1fr !important;
+    overflow:visible !important;
+  }
+
+  .htp-terminal-stat{
+    min-width:0 !important;
+    padding:0 7px !important;
+  }
+
+  .htp-terminal-stat:nth-child(1) strong{
+    font-size:16px !important;
+  }
+
+  .htp-terminal-stat span{
+    font-size:9px !important;
+  }
+
+  .htp-terminal-stat strong{
+    font-size:11px !important;
+  }
+}
 </style>
