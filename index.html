@@ -2055,31 +2055,36 @@ section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:
 
 
 
-<style id="HAPPYTIP-MOBILE-MARKET-FINAL">
+
+
+
+
+
+
+
+<style id="HAPPYTIP-MOBILE-MARKET-SEARCH-OUTSIDE">
+
+[data-happytip-mobile-search="true"] {
+  display: none;
+}
 
 @media screen and (max-width: 768px) {
 
-  /* ================================
-     MARKET CATEGORY
-     ================================ */
-
   #market .market-tabs {
-    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
 
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
 
-    width: 100% !important;
-    max-width: 100% !important;
-
     gap: 6px !important;
 
-    margin: 10px 0 58px !important;
+    margin: 10px 0 8px !important;
     padding: 0 !important;
 
     overflow-x: auto !important;
-    overflow-y: visible !important;
+    overflow-y: hidden !important;
 
     white-space: nowrap !important;
 
@@ -2091,97 +2096,67 @@ section{padding:72px 0}.statgrid,.two,.burn,.transparency{grid-template-columns:
   }
 
   #market .market-tab {
-    display: inline-flex !important;
     flex: 0 0 auto !important;
-
     width: auto !important;
-    min-width: auto !important;
 
-    padding: 7px 11px !important;
-
+    padding: 7px 10px !important;
     font-size: 11px !important;
+
     white-space: nowrap !important;
   }
 
+  /* SEARCH BENAR-BENAR DI LUAR .market-tabs */
+  #market [data-happytip-mobile-search="true"] {
 
-  /* ================================
-     SEARCH BAR
-     ================================ */
-
-  #market .market-tabs::after {
-
-    content: "🔍  Search coin / pair" !important;
-
-    position: absolute !important;
-
-    left: 0 !important;
-    right: 0 !important;
-    bottom: -48px !important;
-
-    display: block !important;
+    display: flex !important;
 
     width: 100% !important;
+    max-width: 100% !important;
+
     height: 40px !important;
 
     box-sizing: border-box !important;
 
-    padding: 0 13px !important;
+    align-items: center !important;
+    gap: 8px !important;
 
-    line-height: 40px !important;
+    margin: 0 0 14px !important;
+    padding: 0 13px !important;
 
     border: 1px solid rgba(255,255,255,.12) !important;
     border-radius: 9px !important;
 
-    background: rgba(255,255,255,.045) !important;
+    background: rgba(255,255,255,.05) !important;
 
     color: rgba(255,255,255,.55) !important;
 
     font-size: 12px !important;
 
-    white-space: nowrap !important;
-
-    pointer-events: none !important;
-  }
-
-
-  /* ================================
-     COIN LIST HIDDEN
-     ================================ */
-
-  #market .market-grid {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    max-height: 0 !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
     overflow: hidden !important;
   }
 
-  #market .market-card {
+  /* Coin cards tetap hilang */
+  #market .market-grid {
     display: none !important;
   }
 
 }
 
-
 @media screen and (max-width: 430px) {
 
   #market .market-tabs {
     gap: 5px !important;
-    margin-bottom: 56px !important;
+    margin-bottom: 7px !important;
   }
 
   #market .market-tab {
-    padding: 6px 9px !important;
+    padding: 6px 8px !important;
     font-size: 10px !important;
   }
 
-  #market .market-tabs::after {
-    bottom: -46px !important;
+  #market [data-happytip-mobile-search="true"] {
     height: 38px !important;
-    line-height: 38px !important;
+    margin-bottom: 12px !important;
     font-size: 11px !important;
   }
 
@@ -2331,6 +2306,11 @@ All prices, balances and trades on this page are simulated.
 <button class="market-tab">🚀 Altcoins</button>
 <button class="market-tab">🐸 Meme</button>
 </div>
+<div data-happytip-mobile-search="true">
+  <span>🔍</span>
+  <span>Search coin / pair</span>
+</div>
+
 
 <div class="market-grid">
 
