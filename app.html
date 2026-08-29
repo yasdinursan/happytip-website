@@ -167,18 +167,69 @@ function openFeature(feature){
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
   if(feature === "profile"){
-    if(tg){
-      tg.sendData(JSON.stringify({
-        action: "profile"
-      }));
-      tg.close();
-    }else{
-      alert("Open HappyTip from Telegram");
-    }
+    showProfile();
     return;
   }
 
   alert(feature.charAt(0).toUpperCase()+feature.slice(1)+" — coming next");
+}
+
+function showProfile(){
+  const user=tg?.initDataUnsafe?.user || {};
+  const name=user.username ? "@"+user.username : (user.first_name || "HappyTip User");
+
+  document.querySelector(".container").innerHTML=`
+    <div class="header">
+      <div class="logo">Happy<span>Tip</span></div>
+      <button onclick="location.reload()" style="background:none;border:0;color:#20d6a3;font-weight:700">‹ Back</button>
+    </div>
+
+    <div class="balance">
+      <div class="label">My Profile</div>
+      <div class="amount" style="font-size:26px">${name}</div>
+      <div class="label" style="margin-top:8px">HappyTip Member</div>
+    </div>
+
+    <div class="section">Profile</div>
+
+    <div class="power">
+      <div class="power-row">
+        <span>⭐ HappyTip Level</span>
+        <b>Loading...</b>
+      </div>
+      <div class="power-row">
+        <span>✨ Total XP</span>
+        <b>Loading...</b>
+      </div>
+      <div class="power-row">
+        <span>📈 Level Progress</span>
+        <b>Loading...</b>
+      </div>
+      <div class="power-row">
+        <span>🎯 XP Events</span>
+        <b>Loading...</b>
+      </div>
+      <div class="power-row">
+        <span>👥 Referrals</span>
+        <b>Loading...</b>
+      </div>
+      <div class="power-row">
+        <span>🎯 Missions Completed</span>
+        <b>Loading...</b>
+      </div>
+    </div>
+
+    <div class="section">About Progress</div>
+
+    <div class="power">
+      <div class="label">
+        XP adalah progression permanen kamu.
+        Activity Points (AP) dihitung terpisah.
+      </div>
+    </div>
+  `;
+
+  document.querySelector(".nav").style.display="none";
 }
 </script>
 
