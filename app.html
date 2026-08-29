@@ -655,6 +655,9 @@ async function showProfile(){
   const firstName=user.first_name || "U";
   const userId=user.id;
 
+  console.log("HAPPYTIP MINI APP USER:", user);
+  console.log("HAPPYTIP MINI APP USER ID:", userId);
+
   document.querySelector(".container").innerHTML=`
     <div class="profile-page">
 
