@@ -165,6 +165,19 @@ if(tg){
 
 function openFeature(feature){
   if(tg) tg.HapticFeedback?.impactOccurred("light");
+
+  if(feature === "profile"){
+    if(tg){
+      tg.sendData(JSON.stringify({
+        action: "profile"
+      }));
+      tg.close();
+    }else{
+      alert("Open HappyTip from Telegram");
+    }
+    return;
+  }
+
   alert(feature.charAt(0).toUpperCase()+feature.slice(1)+" — coming next");
 }
 </script>
