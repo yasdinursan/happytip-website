@@ -776,7 +776,7 @@ async function showProfile(){
   }
 
   try{
-    const API="https://cdt-cable-scuba-exclusion.trycloudflare.com/api/profile";
+    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/profile";
     const response=await fetch(API+"?user_id="+encodeURIComponent(userId));
 
     if(!response.ok) throw new Error("API HTTP "+response.status);
