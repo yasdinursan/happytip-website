@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#0b0d12">
 <title>HappyTip App</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js">
+</script>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;background:#080a0f;color:#f5f7fb;font-family:Arial,sans-serif}
@@ -623,6 +624,322 @@ button{font-family:inherit}
 </div>
 
 <script>
+
+async function showWithdraw(){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+
+  const user=tg?.initDataUnsafe?.user || {};
+  const userId=user.id;
+
+  document.querySelector(".container").innerHTML=`
+    <div class="profile-page">
+
+      <div class="profile-top">
+        <button class="back-btn" onclick="showWallet()">‹</button>
+        <div class="page-title">Withdraw</div>
+        <button class="refresh-btn" onclick="showWithdraw()">↻</button>
+      </div>
+
+      <div class="profile-hero">
+        <div class="avatar">💸</div>
+        <div class="profile-name">Withdraw HTP</div>
+        <div class="profile-subtitle">Withdraw your earned HTP</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">🟢 Available HTP</div>
+        <div class="stat-value" id="withdraw-balance">Loading...</div>
+        <div class="info-desc">
+          Only your available internal HTP reward balance can be withdrawn.
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">👛 Destination Wallet</div>
+
+        <input
+          id="withdraw-address"
+          class="input"
+          type="text"
+          placeholder="0x..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+
+        <div style="height:12px"></div>
+
+        <div class="info-title">💰 Amount</div>
+
+        <input
+          id="withdraw-amount"
+          class="input"
+          type="number"
+          min="0"
+          step="any"
+          placeholder="Amount HTP"
+          inputmode="decimal"
+        />
+
+        <div style="height:14px"></div>
+
+        <button
+          class="primary-btn"
+          id="withdraw-submit"
+          onclick="submitWithdraw()"
+        >
+          💸 Withdraw HTP
+        </button>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">🌐 Network</div>
+
+        <div class="info-row">
+          <span>Network</span>
+          <b>Ethereum Sepolia</b>
+        </div>
+
+        <div class="info-row">
+          <span>Asset</span>
+          <b>HTP</b>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">⚠️ Important</div>
+        <p>
+          Make sure the destination address is correct.
+          HTP withdrawals are sent from the HappyTip Treasury
+          on Ethereum Sepolia.
+        </p>
+      </div>
+
+    </div>
+  `;
+
+  if(!userId){
+    document.getElementById("withdraw-balance").textContent="Unavailable";
+    return;
+  }
+
+  try{
+    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/wallet";
+
+    const response=await fetch(
+      API+"?user_id="+encodeURIComponent(userId)
+    );
+
+    if(!response.ok){
+      throw new Error("API HTTP "+response.status);
+    }
+
+    const data=await response.json();
+
+    if(!data.ok || !data.wallet){
+      throw new Error(data.error || "Wallet unavailable");
+    }
+
+    /*
+     * Withdrawal balance is the user's internal claimed_reward.
+     * It is NOT the on-chain wallet HTP balance.
+     *
+     * The withdraw backend is the final authority and validates
+     * claimed_reward again before broadcasting the treasury TX.
+     */
+    const withdrawBalance =
+      data.wallet.claimed_reward ??
+      data.wallet.internal_balance ??
+      0;
+
+    document.getElementById("withdraw-balance").textContent =
+      Number(withdrawBalance).toLocaleString("en-US") + " HTP";
+
+  }catch(error){
+    console.error("Mini App Withdraw Balance API:",error);
+    document.getElementById("withdraw-balance").textContent="Unavailable";
+  }
+}
+
+
+async function submitWithdraw(){
+
+  if(tg) tg.HapticFeedback?.impactOccurred("medium");
+
+  const initData=tg?.initData || "";
+
+  if(!initData){
+    alert("❌ Telegram authentication unavailable.");
+    return;
+  }
+
+  const address=document.getElementById("withdraw-address")?.value.trim();
+  const amount=document.getElementById("withdraw-amount")?.value.trim();
+  const button=document.getElementById("withdraw-submit");
+
+  if(!address){
+    alert("❌ Enter the destination wallet address.");
+    return;
+  }
+
+  if(!/^0x[a-fA-F0-9]{40}$/.test(address)){
+    alert("❌ Invalid Ethereum wallet address.");
+    return;
+  }
+
+  if(!amount){
+    alert("❌ Enter the withdrawal amount.");
+    return;
+  }
+
+  const numericAmount=Number(amount);
+
+  if(!Number.isFinite(numericAmount) || numericAmount<=0){
+    alert("❌ Amount must be greater than 0.");
+    return;
+  }
+
+  button.disabled=true;
+  button.textContent="⏳ Processing...";
+
+  try{
+
+    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/withdraw";
+
+    const response=await fetch(API,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "X-Telegram-Init-Data":initData
+      },
+      body:JSON.stringify({
+        asset:"htp",
+        network:"sepolia",
+        address:address,
+        amount:amount
+      })
+    });
+
+    const data=await response.json();
+
+    if(data.ok){
+
+      if(tg) tg.HapticFeedback?.notificationOccurred("success");
+
+      document.querySelector(".container").innerHTML=`
+        <div class="profile-page">
+
+          <div class="profile-top">
+            <button class="back-btn" onclick="showWallet()">‹</button>
+            <div class="page-title">Withdraw</div>
+          </div>
+
+          <div class="profile-hero">
+            <div class="avatar">✅</div>
+            <div class="profile-name">Withdrawal Sent</div>
+            <div class="profile-subtitle">HTP withdrawal completed</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-title">💰 Amount</div>
+            <div class="stat-value">${data.amount} HTP</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-title">👛 Destination</div>
+            <div class="ref-link">${address}</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-title">🔗 Transaction</div>
+            <div class="ref-link">${data.tx_hash}</div>
+
+            <button
+              class="primary-btn"
+              onclick="window.open('${data.explorer}','_blank')"
+            >
+              🔗 View on Etherscan
+            </button>
+          </div>
+
+          <button class="primary-btn" onclick="showWallet()">
+            👛 Back to Wallet
+          </button>
+
+        </div>
+      `;
+
+      return;
+    }
+
+    if(data.pending){
+
+      if(tg) tg.HapticFeedback?.notificationOccurred("warning");
+
+      document.querySelector(".container").innerHTML=`
+        <div class="profile-page">
+
+          <div class="profile-top">
+            <button class="back-btn" onclick="showWallet()">‹</button>
+            <div class="page-title">Withdraw</div>
+          </div>
+
+          <div class="profile-hero">
+            <div class="avatar">⏳</div>
+            <div class="profile-name">Transaction Pending</div>
+            <div class="profile-subtitle">Waiting for blockchain confirmation</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-title">💰 Amount</div>
+            <div class="stat-value">${data.amount} ${data.asset}</div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-title">🔗 Transaction</div>
+            <div class="ref-link">${data.tx_hash}</div>
+
+            <button
+              class="primary-btn"
+              onclick="window.open('${data.explorer}','_blank')"
+            >
+              🔗 View Transaction
+            </button>
+          </div>
+
+          <div class="info-card">
+            <p>
+              The transaction has already been broadcast.
+              Your internal balance will only be deducted after
+              successful on-chain confirmation.
+            </p>
+          </div>
+
+        </div>
+      `;
+
+      return;
+    }
+
+    throw new Error(data.error || "Withdrawal failed.");
+
+  }catch(error){
+
+    console.error("Mini App Withdraw:",error);
+
+    if(tg) tg.HapticFeedback?.notificationOccurred("error");
+
+    alert(
+      "❌ WITHDRAW FAILED\n\n"+
+      (error.message || "Unknown error")
+    );
+
+    button.disabled=false;
+    button.textContent="💸 Withdraw HTP";
+  }
+}
+
+
+
 const tg=window.Telegram?.WebApp;
 
 if(tg){
@@ -649,7 +966,262 @@ function openFeature(feature){
     return;
   }
 
+  if(feature === "wallet"){
+    showWallet();
+    return;
+  }
+
+  if(feature === "deposit"){
+    showDeposit();
+    return;
+  }
+
+  if(feature === "withdraw"){
+    showWithdraw();
+    return;
+  }
+
   alert(feature.charAt(0).toUpperCase()+feature.slice(1)+" — coming next");
+}
+
+async function showDeposit(){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+
+  const user=tg?.initDataUnsafe?.user || {};
+  const userId=user.id;
+
+  document.querySelector(".container").innerHTML=`
+    <div class="profile-page">
+
+      <div class="profile-top">
+        <button class="back-btn" onclick="showWallet()">‹</button>
+        <div class="page-title">Deposit</div>
+        <button class="refresh-btn" onclick="showDeposit()">↻</button>
+      </div>
+
+      <div class="profile-hero">
+        <div class="avatar">📥</div>
+        <div class="profile-name">Deposit</div>
+        <div class="profile-subtitle">Deposit ETH or HTP</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">👛 Your Wallet Address</div>
+
+        <div class="ref-link" id="deposit-address">
+          Loading...
+        </div>
+
+        <button class="primary-btn" onclick="copyDepositAddress()">
+          📋 Copy Address
+        </button>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">🌐 Network</div>
+
+        <div class="info-row">
+          <span>Network</span>
+          <b>Ethereum Sepolia</b>
+        </div>
+
+        <div class="info-row">
+          <span>Supported Assets</span>
+          <b>ETH / HTP</b>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">⚠️ Important</div>
+        <p>
+          Only send ETH or HTP on Ethereum Sepolia.
+          Do not send Mainnet assets to this address.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">💡 How Deposit Works</div>
+        <p>
+          Send ETH or HTP to the wallet address above.
+          HTP deposits are automatically detected and processed by HappyTip.
+        </p>
+      </div>
+
+    </div>
+  `;
+
+  if(!userId){
+    document.getElementById("deposit-address").textContent="Unavailable";
+    return;
+  }
+
+  try{
+    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/wallet";
+    const response=await fetch(
+      API+"?user_id="+encodeURIComponent(userId)
+    );
+
+    if(!response.ok){
+      throw new Error("API HTTP "+response.status);
+    }
+
+    const data=await response.json();
+
+    if(!data.ok || !data.wallet){
+      throw new Error(data.error || "Wallet unavailable");
+    }
+
+    const address=data.wallet.address;
+
+    document.getElementById("deposit-address").textContent=address;
+    window.happyTipDepositAddress=address;
+
+  }catch(error){
+    console.error("Mini App Deposit API:",error);
+    document.getElementById("deposit-address").textContent="Unable to load";
+  }
+}
+
+async function copyDepositAddress(){
+  const address=window.happyTipDepositAddress;
+  if(!address) return;
+
+  try{
+    await navigator.clipboard.writeText(address);
+  }catch(e){
+    const input=document.createElement("input");
+    input.value=address;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+  }
+
+  if(tg){
+    tg.HapticFeedback?.notificationOccurred("success");
+  }
+}
+
+async function showWallet(){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+
+  const user=tg?.initDataUnsafe?.user || {};
+  const userId=user.id;
+
+  document.querySelector(".container").innerHTML=`
+    <div class="profile-page">
+
+      <div class="profile-top">
+        <button class="back-btn" onclick="location.reload()">‹</button>
+        <div class="page-title">Wallet</div>
+        <button class="refresh-btn" onclick="showWallet()">↻</button>
+      </div>
+
+      <div class="profile-hero">
+        <div class="avatar">👛</div>
+        <div class="profile-name">My Wallet</div>
+        <div class="profile-subtitle">HappyTip Wallet</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">👛 Wallet Address</div>
+        <div class="ref-link" id="wallet-address">Loading...</div>
+
+        <button class="primary-btn" onclick="copyWalletAddress()">
+          📋 Copy Address
+        </button>
+      </div>
+
+      <div class="profile-stats">
+
+        <div class="stat-card">
+          <div class="stat-icon">Ξ</div>
+          <div class="stat-value" id="wallet-eth">—</div>
+          <div class="stat-label">ETH · Sepolia</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🟢</div>
+          <div class="stat-value" id="wallet-htp">—</div>
+          <div class="stat-label">HTP</div>
+        </div>
+
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">Wallet Actions</div>
+
+        <button class="primary-btn" onclick="showDeposit()">
+          📥 Deposit
+        </button>
+
+        <button class="primary-btn" onclick="showWithdraw()">
+          💸 Withdraw
+        </button>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">🔵 Network</div>
+        <div class="info-row">
+          <span>Ethereum Network</span>
+          <b>Sepolia</b>
+        </div>
+        <p>Only use Ethereum Sepolia assets with this wallet.</p>
+      </div>
+
+    </div>
+  `;
+
+  if(!userId){
+    document.getElementById("wallet-address").textContent="Unavailable";
+    return;
+  }
+
+  try{
+    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/wallet";
+    const response=await fetch(API+"?user_id="+encodeURIComponent(userId));
+
+    if(!response.ok) throw new Error("API HTTP "+response.status);
+
+    const data=await response.json();
+
+    if(!data.ok || !data.wallet){
+      throw new Error(data.error || "Wallet unavailable");
+    }
+
+    const w=data.wallet;
+
+    document.getElementById("wallet-address").textContent=w.address;
+    document.getElementById("wallet-eth").textContent=w.eth_balance;
+    document.getElementById("wallet-htp").textContent=w.htp_balance;
+
+    window.happyTipWalletAddress=w.address;
+
+  }catch(error){
+    console.error("Mini App Wallet API:",error);
+
+    document.getElementById("wallet-address").textContent="Unable to load";
+    document.getElementById("wallet-eth").textContent="—";
+    document.getElementById("wallet-htp").textContent="—";
+  }
+}
+
+async function copyWalletAddress(){
+  const address=window.happyTipWalletAddress;
+  if(!address) return;
+
+  try{
+    await navigator.clipboard.writeText(address);
+  }catch(e){
+    const input=document.createElement("input");
+    input.value=address;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+  }
+
+  if(tg) tg.HapticFeedback?.notificationOccurred("success");
 }
 
 async function showReferral(){
