@@ -914,7 +914,445 @@ button,a,input{
 }
 </style>
 
-</head>
+
+<style id="happytip-full-ui-redesign">
+
+/* ============================================================
+   HAPPYTIP MINI APP — FULL UI REDESIGN
+   Visual layer only. Existing APIs/functions preserved.
+   ============================================================ */
+
+:root{
+  --ht-bg:#080b10;
+  --ht-surface:#0f141b;
+  --ht-surface-2:#141a22;
+  --ht-border:rgba(255,255,255,.075);
+  --ht-border-strong:rgba(255,255,255,.12);
+  --ht-text:#f5f7fa;
+  --ht-muted:#8993a3;
+  --ht-green:#28e58a;
+  --ht-blue:#62a9ff;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(39,229,138,.055),transparent 35%),
+    var(--ht-bg)!important;
+}
+
+.container{
+  max-width:680px;
+  margin:auto;
+  min-height:100vh;
+  padding-bottom:92px;
+}
+
+/* HOME */
+
+.htp-home{
+  padding:18px 15px 105px;
+  animation:htpEnter .18s ease-out;
+}
+
+@keyframes htpEnter{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:none}
+}
+
+.htp-home-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:3px 0 22px;
+}
+
+.htp-eyebrow{
+  font-size:10px;
+  letter-spacing:1.6px;
+  color:var(--ht-muted);
+  font-weight:800;
+}
+
+.htp-greeting{
+  margin-top:3px;
+  font-size:24px;
+  line-height:1.15;
+  font-weight:800;
+  letter-spacing:-.5px;
+}
+
+.htp-muted{
+  margin-top:4px;
+  color:var(--ht-muted);
+  font-size:12px;
+}
+
+.htp-avatar-button{
+  width:44px;
+  height:44px;
+  border-radius:15px;
+  border:1px solid var(--ht-border-strong);
+  background:#121820;
+  color:#e9fff5;
+  font-size:16px;
+  font-weight:800;
+}
+
+.htp-balance-hero{
+  position:relative;
+  overflow:hidden;
+  padding:22px;
+  border-radius:23px;
+  background:
+    radial-gradient(circle at 90% 15%,rgba(39,229,138,.12),transparent 32%),
+    linear-gradient(145deg,#121922,#0c1117);
+  border:1px solid var(--ht-border);
+  box-shadow:0 18px 45px rgba(0,0,0,.2);
+}
+
+.htp-balance-label{
+  color:var(--ht-muted);
+  font-size:10px;
+  letter-spacing:1.1px;
+  font-weight:750;
+}
+
+.htp-balance-number{
+  margin-top:7px;
+  font-size:34px;
+  font-weight:850;
+  letter-spacing:-1px;
+}
+
+.htp-balance-token{
+  display:inline-block;
+  margin-left:5px;
+  color:#a8b3c1;
+  font-size:12px;
+  font-weight:700;
+}
+
+.htp-balance-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:22px;
+  padding-top:13px;
+  border-top:1px solid var(--ht-border);
+  color:var(--ht-muted);
+  font-size:11px;
+}
+
+.htp-balance-meta button,
+.htp-section-link{
+  border:0;
+  background:none;
+  color:#a7efcd;
+  font-size:11px;
+  font-weight:750;
+  padding:0;
+}
+
+.htp-home-section{
+  margin-top:24px;
+}
+
+.htp-section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:0 2px 10px;
+  color:#dce2e9;
+  font-size:13px;
+  font-weight:750;
+}
+
+.htp-power-overview{
+  min-height:94px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:17px;
+  border:1px solid var(--ht-border);
+  border-radius:18px;
+  background:rgba(255,255,255,.025);
+}
+
+.htp-power-overview strong{
+  display:block;
+  margin-top:4px;
+  font-size:26px;
+}
+
+.htp-power-overview small{
+  color:var(--ht-muted);
+}
+
+.htp-power-label{
+  color:var(--ht-muted);
+  font-size:11px;
+}
+
+.htp-power-ring{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:5px solid rgba(39,229,138,.12);
+  color:#b9f5d8;
+  font-weight:800;
+  font-size:13px;
+}
+
+.htp-home-links{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.htp-home-links button{
+  width:100%;
+  min-height:66px;
+  display:grid;
+  grid-template-columns:38px 1fr 18px;
+  align-items:center;
+  gap:10px;
+  text-align:left;
+  padding:11px 13px;
+  border:1px solid var(--ht-border);
+  border-radius:16px;
+  background:#0d1218;
+  color:var(--ht-text);
+}
+
+.htp-home-links button>span{
+  width:34px;
+  height:34px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.045);
+  color:#b9c4d1;
+}
+
+.htp-home-links b{
+  display:block;
+  font-size:13px;
+}
+
+.htp-home-links small{
+  display:block;
+  margin-top:3px;
+  color:var(--ht-muted);
+  font-size:10px;
+}
+
+.htp-home-links i{
+  color:#697585;
+  font-style:normal;
+  font-size:20px;
+}
+
+.htp-home-note{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  padding:13px;
+  border-left:2px solid rgba(39,229,138,.35);
+  background:rgba(255,255,255,.018);
+}
+
+.htp-home-note span{
+  color:#8fe5bb;
+}
+
+.htp-home-note b{
+  font-size:11px;
+}
+
+.htp-home-note p{
+  margin:3px 0 0;
+  color:var(--ht-muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+/* INTERNAL PAGES */
+
+.profile-page{
+  max-width:680px!important;
+  padding:12px 15px 105px!important;
+}
+
+.profile-top{
+  min-height:48px!important;
+  margin-bottom:12px!important;
+}
+
+.profile-hero{
+  padding:12px 8px 20px!important;
+}
+
+.profile-hero .avatar{
+  width:62px!important;
+  height:62px!important;
+  border-radius:19px!important;
+  background:#121820!important;
+  border:1px solid var(--ht-border-strong)!important;
+  box-shadow:none!important;
+}
+
+.profile-name{
+  font-size:20px!important;
+}
+
+.profile-subtitle{
+  color:var(--ht-muted)!important;
+}
+
+.profile-stats{
+  grid-template-columns:repeat(2,1fr)!important;
+  gap:8px!important;
+}
+
+.stat-card{
+  background:#0f141b!important;
+  border:1px solid var(--ht-border)!important;
+  box-shadow:none!important;
+}
+
+.info-card{
+  background:#0f141b!important;
+  border:1px solid var(--ht-border)!important;
+  box-shadow:none!important;
+}
+
+.xp-card{
+  background:linear-gradient(145deg,#101821,#0d1218)!important;
+  border:1px solid rgba(98,169,255,.12)!important;
+}
+
+/* DEPOSIT / WITHDRAW COMMON FRAME */
+
+.profile-page .info-card{
+  border-radius:17px!important;
+}
+
+.profile-page .primary-btn{
+  background:rgba(39,229,138,.075)!important;
+  border-color:rgba(39,229,138,.18)!important;
+}
+
+.input{
+  background:#090e14!important;
+  border:1px solid var(--ht-border-strong)!important;
+  border-radius:12px!important;
+  color:#f2f5f8!important;
+}
+
+/* BOTTOM NAV */
+
+.htp-bottom-nav{
+  position:fixed!important;
+  left:50%!important;
+  bottom:max(10px,env(safe-area-inset-bottom))!important;
+  transform:translateX(-50%)!important;
+  width:min(650px,calc(100% - 22px))!important;
+  height:67px!important;
+  padding:6px!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,1fr)!important;
+  gap:3px!important;
+  z-index:1000!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  border-radius:20px!important;
+  background:rgba(12,17,23,.92)!important;
+  backdrop-filter:blur(18px)!important;
+  -webkit-backdrop-filter:blur(18px)!important;
+  box-shadow:0 15px 45px rgba(0,0,0,.35)!important;
+}
+
+.htp-bottom-nav button{
+  border:0!important;
+  border-radius:15px!important;
+  background:transparent!important;
+  color:#697585!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:3px!important;
+  font-size:9px!important;
+  font-weight:700!important;
+}
+
+.htp-bottom-nav button.active{
+  color:#dfffee!important;
+  background:rgba(39,229,138,.09)!important;
+}
+
+.htp-bottom-nav .nav-icon{
+  font-size:19px!important;
+  line-height:19px!important;
+}
+
+/* Hide old homepage structures if they remain */
+.container>.header,
+.container>.balance,
+.container>.section,
+.container>.grid,
+.container>.power{
+  display:none;
+}
+
+@media(max-width:430px){
+  .htp-home{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .htp-balance-number{
+    font-size:31px;
+  }
+
+  .profile-page{
+    padding-left:12px!important;
+    padding-right:12px!important;
+  }
+}
+
+</style>
+
+<style id="happytip-home-final-ui">
+.home-page{max-width:680px;margin:0 auto;padding:14px 14px 105px;color:#f5f7fa;animation:htpPageIn .16s ease-out}
+.home-balance{margin:18px 0 24px;padding:22px 20px;border-radius:22px;background:linear-gradient(145deg,#111820,#0c1117);border:1px solid rgba(255,255,255,.07)}
+.home-balance-label{font-size:11px;color:#8f9aaa;text-transform:uppercase;letter-spacing:.8px}
+.home-balance-value{margin-top:8px;font-size:32px;font-weight:850;letter-spacing:-1px}
+.home-balance-value span{font-size:15px;color:#27e58a}
+.home-balance-network{margin-top:7px;font-size:11px;color:#707b8b}
+.home-section-title{margin:22px 2px 10px;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.8px;color:#aeb7c4}
+.home-menu-list{display:flex;flex-direction:column;gap:7px}
+.home-menu-list button{width:100%;display:grid;grid-template-columns:42px 1fr 20px;align-items:center;text-align:left;gap:10px;padding:13px;border:1px solid rgba(255,255,255,.065);border-radius:16px;background:#10151d;color:#f5f7fa}
+.home-menu-list button:active{transform:scale(.985)}
+.home-menu-icon{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(39,229,138,.08);color:#27e58a;font-size:18px}
+.home-menu-list b{display:block;font-size:13px}
+.home-menu-list small{display:block;margin-top:3px;color:#818b9a;font-size:11px}
+.home-arrow{color:#697484;font-size:22px;text-align:right}
+.home-power{padding:16px;border-radius:18px;background:#10151d;border:1px solid rgba(255,255,255,.07)}
+.home-power>div:first-child{display:flex;justify-content:space-between;font-size:13px}
+.home-power-bar{height:6px;margin:12px 0;border-radius:99px;background:#202733;overflow:hidden}
+.home-power-bar i{display:block;height:100%;border-radius:99px;background:#27e58a}
+.home-power-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.home-power-grid span{padding:9px;border-radius:11px;background:rgba(255,255,255,.025);font-size:11px;color:#8f9aaa}
+.home-power-grid b{float:right;color:#e8edf2}
+.htp-bottom-nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(94%,520px);display:grid;grid-template-columns:repeat(4,1fr);padding:7px;border:1px solid rgba(255,255,255,.08);border-radius:19px;background:rgba(12,16,22,.94);backdrop-filter:blur(18px);z-index:999}
+.htp-bottom-nav button{border:0;background:transparent;color:#737e8d;padding:7px 3px;border-radius:13px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px}
+.htp-bottom-nav button.active{color:#27e58a;background:rgba(39,229,138,.08)}
+.htp-bottom-nav .nav-icon{font-size:20px;line-height:20px}
+</style></head>
 
 <body>
 <div class="container">
@@ -928,34 +1366,6 @@ button,a,input{
   <div class="label">My HTP Balance</div>
   <div class="amount">0 <span class="symbol">HTP</span></div>
   <div class="label" style="margin-top:8px">Wallet balance</div>
-</div>
-
-<div class="section">Quick Actions</div>
-
-<div class="grid">
-  <button class="card" onclick="openFeature('wallet')">
-    <div class="icon">👛</div>
-    Wallet
-    <small>Manage your wallet</small>
-  </button>
-
-  <button class="card" onclick="openFeature('tip')">
-    <div class="icon">🎁</div>
-    Send Tip
-    <small>Reward someone</small>
-  </button>
-
-  <button class="card" onclick="openFeature('deposit')">
-    <div class="icon">📥</div>
-    Deposit
-    <small>Deposit HTP</small>
-  </button>
-
-  <button class="card" onclick="openFeature('withdraw')">
-    <div class="icon">💸</div>
-    Withdraw
-    <small>Withdraw HTP</small>
-  </button>
 </div>
 
 <div class="section">HappyTip</div>
@@ -1001,22 +1411,77 @@ button,a,input{
 
 </div>
 
-<div class="nav">
-  <button class="active" onclick="scrollTo(0,0)">
-    <span class="nav-icon">🏠</span>Home
+<div class="htp-bottom-nav">
+  <button class="active" onclick="showHome();setActiveNav("home")">
+    <span class="nav-icon">⌂</span><span>Home</span>
   </button>
-  <button onclick="openFeature('wallet')">
-    <span class="nav-icon">👛</span>Wallet
+  <button onclick="showWallet();setActiveNav("wallet")">
+    <span class="nav-icon">◈</span><span>Wallet</span>
   </button>
-  <button onclick="openFeature('giveaway')">
-    <span class="nav-icon">🎁</span>Giveaway
+  <button onclick="openFeature('giveaway');setActiveNav("giveaway")">
+    <span class="nav-icon">✦</span><span>Giveaway</span>
   </button>
-  <button onclick="openFeature('profile')">
-    <span class="nav-icon">👤</span>Profile
+  <button onclick="showProfile();setActiveNav("profile")">
+    <span class="nav-icon">◎</span><span>Profile</span>
   </button>
 </div>
 
 <script>
+
+async function showHome(){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+  document.querySelector(".container").innerHTML=`
+    <div class="home-page">
+      <div class="header">
+        <div class="logo">Happy<span>Tip</span></div>
+        <div class="user" id="username">Guest</div>
+      </div>
+
+      <div class="home-balance">
+        <div class="home-balance-label">My HTP Balance</div>
+        <div class="home-balance-value">0 <span>HTP</span></div>
+        <div class="home-balance-network">Ethereum Sepolia</div>
+      </div>
+
+      <div class="home-section-title">HappyTip</div>
+      <div class="home-menu-list">
+        <button onclick="openFeature('tip')">
+          <span class="home-menu-icon">♥</span>
+          <span><b>Send Tip</b><small>Send HTP to someone</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+        <button onclick="openFeature('giveaway')">
+          <span class="home-menu-icon">✦</span>
+          <span><b>Giveaway</b><small>Join active giveaways</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+        <button onclick="openFeature('missions')">
+          <span class="home-menu-icon">✓</span>
+          <span><b>Missions</b><small>Complete missions and earn rewards</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+        <button onclick="showReferral()">
+          <span class="home-menu-icon">↗</span>
+          <span><b>Referral</b><small>Invite friends to HappyTip</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+      </div>
+
+      <div class="home-section-title">Giveaway Power</div>
+      <div class="home-power">
+        <div><span>Core Power</span><b>0 / 50</b></div>
+        <div class="home-power-bar"><i style="width:0%"></i></div>
+        <div class="home-power-grid">
+          <span>Lock <b>0</b></span>
+          <span>Level <b>0</b></span>
+          <span>Activity <b>0</b></span>
+          <span>Streak <b>0</b></span>
+        </div>
+      </div>
+    </div>`;
+  document.querySelector(".nav")?.remove();
+  setActiveNav("home");
+}
 
 async function showWithdraw(){
   if(tg) tg.HapticFeedback?.impactOccurred("light");
@@ -1496,6 +1961,7 @@ async function copyDepositAddress(){
 }
 
 async function showWallet(){
+    setActiveNav("wallet");
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
   const user=tg?.initDataUnsafe?.user || {};
@@ -1741,6 +2207,7 @@ async function copyWalletAddress(){
 }
 
 async function showReferral(){
+    setActiveNav("profile");
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
   const user=tg?.initDataUnsafe?.user || {};
@@ -1879,6 +2346,7 @@ function shareReferral(){
 }
 
 async function showProfile(){
+    setActiveNav("profile");
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
   const user=tg?.initDataUnsafe?.user || {};
