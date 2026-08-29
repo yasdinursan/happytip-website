@@ -644,7 +644,150 @@ function openFeature(feature){
     return;
   }
 
+  if(feature === "referral"){
+    showReferral();
+    return;
+  }
+
   alert(feature.charAt(0).toUpperCase()+feature.slice(1)+" — coming next");
+}
+
+async function showReferral(){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+
+  const user=tg?.initDataUnsafe?.user || {};
+  const userId=user.id;
+
+  document.querySelector(".container").innerHTML=`
+    <div class="profile-page">
+      <div class="profile-top">
+        <button class="back-btn" onclick="location.reload()">‹</button>
+        <div class="page-title">Referral</div>
+        <button class="refresh-btn" onclick="showReferral()">↻</button>
+      </div>
+
+      <div class="profile-hero">
+        <div class="avatar">👥</div>
+        <div class="profile-name">Referral Program</div>
+        <div class="profile-subtitle">Invite friends & earn HTP</div>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-value" id="ref-total">—</div>
+          <div class="stat-label">Total Referrals</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-value" id="ref-active">—</div>
+          <div class="stat-label">Active Referrals</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🎁</div>
+          <div class="stat-value" id="ref-reward">—</div>
+          <div class="stat-label">Total Reward</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">🔗 Your Referral Link</div>
+        <div class="ref-link" id="ref-link">Loading...</div>
+
+        <button class="primary-btn" onclick="copyReferralLink()">
+          📋 Copy Referral Link
+        </button>
+
+        <button class="primary-btn" onclick="shareReferral()">
+          📤 Share Referral
+        </button>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">🎁 Referral Reward</div>
+        <div class="info-row">
+          <span>Reward per active referral</span>
+          <b id="ref-per">10 HTP</b>
+        </div>
+        <p>Referral menjadi aktif setelah user yang kamu undang berhasil membuat wallet HappyTip.</p>
+      </div>
+    </div>
+  `;
+
+  if(!userId){
+    document.getElementById("ref-link").textContent="Unavailable";
+    return;
+  }
+
+  try{
+    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/referral";
+    const response=await fetch(API+"?user_id="+encodeURIComponent(userId));
+
+    if(!response.ok) throw new Error("API HTTP "+response.status);
+
+    const data=await response.json();
+
+    if(!data.ok || !data.referral){
+      throw new Error(data.error || "Referral unavailable");
+    }
+
+    const r=data.referral;
+
+    document.getElementById("ref-total").textContent=r.referral_count;
+    document.getElementById("ref-active").textContent=r.active_referrals;
+    document.getElementById("ref-reward").textContent=r.referral_reward+" HTP";
+    document.getElementById("ref-per").textContent=r.reward_per_referral+" HTP";
+    document.getElementById("ref-link").textContent=r.referral_link;
+
+    window.happyTipReferralLink=r.referral_link;
+
+  }catch(error){
+    console.error("Mini App Referral API:",error);
+    document.getElementById("ref-link").textContent="Unable to load";
+    document.getElementById("ref-total").textContent="—";
+    document.getElementById("ref-active").textContent="—";
+    document.getElementById("ref-reward").textContent="—";
+  }
+}
+
+async function copyReferralLink(){
+  const link=window.happyTipReferralLink;
+  if(!link) return;
+
+  try{
+    await navigator.clipboard.writeText(link);
+  }catch(e){
+    const input=document.createElement("input");
+    input.value=link;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+  }
+
+  if(tg) tg.HapticFeedback?.notificationOccurred("success");
+}
+
+function shareReferral(){
+  const link=window.happyTipReferralLink;
+  if(!link) return;
+
+  const text=encodeURIComponent(
+    "Join me on HappyTip and earn rewards! 🎁\n\n"+link
+  );
+
+  if(tg?.openTelegramLink){
+    tg.openTelegramLink(
+      "https://t.me/share/url?url="+encodeURIComponent(link)+"&text="+text
+    );
+  }else{
+    window.open(
+      "https://t.me/share/url?url="+encodeURIComponent(link)+"&text="+text,
+      "_blank"
+    );
+  }
 }
 
 async function showProfile(){
