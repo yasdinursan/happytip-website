@@ -1161,6 +1161,13 @@ async function showWallet(){
       </div>
 
       <div class="info-card">
+        <div class="info-title">📜 Transaction History</div>
+        <div id="transaction-history">
+          <div class="info-desc">Loading transaction history...</div>
+        </div>
+      </div>
+
+      <div class="info-card">
         <div class="info-title">🔵 Network</div>
         <div class="info-row">
           <span>Ethereum Network</span>
@@ -1203,6 +1210,122 @@ async function showWallet(){
     document.getElementById("wallet-address").textContent="Unable to load";
     document.getElementById("wallet-eth").textContent="—";
     document.getElementById("wallet-htp").textContent="—";
+  }
+
+  loadTransactionHistory(userId);
+}
+
+async function loadTransactionHistory(userId){
+  const box=document.getElementById("transaction-history");
+  if(!box) return;
+
+  if(!userId){
+    box.innerHTML='<div class="info-desc">Transaction history unavailable.</div>';
+    return;
+  }
+
+  try{
+    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/transactions";
+    const response=await fetch(
+      API+"?user_id="+encodeURIComponent(userId)
+    );
+
+    if(!response.ok){
+      throw new Error("API HTTP "+response.status);
+    }
+
+    const data=await response.json();
+
+    if(!data.ok){
+      throw new Error(data.error || "Transaction history unavailable");
+    }
+
+    const transactions=Array.isArray(data.transactions)
+      ? data.transactions
+      : [];
+
+    if(!transactions.length){
+      box.innerHTML=`
+        <div class="info-desc" style="text-align:center;padding:14px 0;">
+          No transactions yet.
+        </div>
+      `;
+      return;
+    }
+
+    const typeInfo={
+      DEPOSIT:{icon:"📥",label:"Deposit"},
+      WITHDRAW:{icon:"💸",label:"Withdraw"},
+      TIP:{icon:"💛",label:"Tip"},
+      TIP_SENT:{icon:"💛",label:"Tip Sent"},
+      TIP_RECEIVED:{icon:"🎁",label:"Tip Received"},
+      INTERNAL_REWARD:{icon:"🎉",label:"Reward"}
+    };
+
+    box.innerHTML=transactions.map(tx=>{
+      const info=typeInfo[tx.type] || {
+        icon:"📄",
+        label:tx.type || "Transaction"
+      };
+
+      const amount=Number(tx.amount || 0);
+
+      const amountText=Number.isFinite(amount)
+        ? amount.toLocaleString("en-US",{maximumFractionDigits:4})
+        : String(tx.amount || "0");
+
+      const timestamp=Number(tx.timestamp || 0);
+
+      const date=timestamp
+        ? new Date(timestamp*1000).toLocaleString("en-GB",{
+            timeZone:"Asia/Jakarta",
+            day:"2-digit",
+            month:"short",
+            year:"numeric",
+            hour:"2-digit",
+            minute:"2-digit"
+          })
+        : "Unknown time";
+
+      const status=String(tx.status || "Confirmed");
+      const txHash=tx.tx_hash ? String(tx.tx_hash) : "";
+
+      const txLink=txHash
+        ? `<a href="https://sepolia.etherscan.io/tx/${encodeURIComponent(txHash)}" target="_blank" rel="noopener noreferrer" style="font-size:11px;text-decoration:none;">View Tx ↗</a>`
+        : "";
+
+      return `
+        <div style="padding:13px 0;border-bottom:1px solid #252b38;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <span style="font-size:20px;">${info.icon}</span>
+              <div>
+                <div style="font-weight:700;">${info.label}</div>
+                <div style="font-size:11px;opacity:.65;">${date} WIB</div>
+              </div>
+            </div>
+
+            <div style="text-align:right;">
+              <div style="font-weight:700;">${amountText} HTP</div>
+              <div style="font-size:11px;opacity:.7;">${status}</div>
+            </div>
+          </div>
+
+          ${txLink
+            ? `<div style="margin-top:7px;text-align:right;">${txLink}</div>`
+            : ""}
+        </div>
+      `;
+    }).join("");
+
+  }catch(error){
+    console.error("Mini App Transaction History API:",error);
+
+    box.innerHTML=`
+      <div class="info-desc" style="text-align:center;padding:14px 0;">
+        Unable to load transaction history.
+      </div>
+    `;
   }
 }
 
