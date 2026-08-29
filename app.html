@@ -1352,7 +1352,608 @@ body{
 .htp-bottom-nav button{border:0;background:transparent;color:#737e8d;padding:7px 3px;border-radius:13px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px}
 .htp-bottom-nav button.active{color:#27e58a;background:rgba(39,229,138,.08)}
 .htp-bottom-nav .nav-icon{font-size:20px;line-height:20px}
-</style></head>
+</style>
+<style id="happytip-final-menu-redesign">
+/* =========================================================
+   HAPPYTIP FINAL MENU REDESIGN
+   Visual-only. Existing JS/API logic remains untouched.
+   ========================================================= */
+
+:root{
+  --htp-bg:#080b10;
+  --htp-surface:#10151c;
+  --htp-surface-2:#141a22;
+  --htp-line:rgba(255,255,255,.075);
+  --htp-line-strong:rgba(255,255,255,.12);
+  --htp-text:#f4f7fa;
+  --htp-muted:#8792a2;
+  --htp-green:#27e58a;
+  --htp-green-soft:rgba(39,229,138,.10);
+  --htp-blue:#65aaff;
+  --htp-orange:#ffb65b;
+}
+
+/* ---------- Global menu surfaces ---------- */
+
+.home-page,
+.profile-page{
+  max-width:680px;
+  margin:0 auto;
+  padding:12px 13px 105px;
+  color:var(--htp-text);
+}
+
+.home-page{
+  animation:htpMenuIn .14s ease-out;
+}
+
+@keyframes htpMenuIn{
+  from{opacity:.45;transform:translateY(3px)}
+  to{opacity:1;transform:none}
+}
+
+/* ---------- Home ---------- */
+
+.home-page .header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:46px;
+  margin-bottom:12px;
+}
+
+.home-page .logo{
+  font-size:21px;
+  font-weight:850;
+  letter-spacing:-.7px;
+}
+
+.home-page .user{
+  color:var(--htp-muted);
+  font-size:12px;
+  max-width:130px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.home-balance{
+  position:relative;
+  padding:20px 18px;
+  border-radius:21px;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(39,229,138,.08),transparent 38%),
+    linear-gradient(145deg,#121920,#0d1218);
+  border:1px solid var(--htp-line);
+  box-shadow:0 14px 40px rgba(0,0,0,.18);
+}
+
+.home-balance-label{
+  color:var(--htp-muted);
+  font-size:11px;
+  letter-spacing:.35px;
+}
+
+.home-balance-value{
+  margin-top:5px;
+  font-size:31px;
+  line-height:1.1;
+  font-weight:850;
+  letter-spacing:-1px;
+}
+
+.home-balance-value span{
+  color:var(--htp-green);
+  font-size:13px;
+  font-weight:750;
+  letter-spacing:0;
+}
+
+.home-balance-network{
+  margin-top:8px;
+  color:#697586;
+  font-size:10px;
+}
+
+.home-section-title{
+  margin:22px 3px 9px;
+  font-size:11px;
+  font-weight:800;
+  color:#bfc7d2;
+  letter-spacing:.85px;
+  text-transform:uppercase;
+}
+
+.home-menu-list{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.home-menu-list button{
+  width:100%;
+  min-height:62px;
+  display:grid;
+  grid-template-columns:40px 1fr 20px;
+  align-items:center;
+  gap:10px;
+  text-align:left;
+  border:1px solid var(--htp-line);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+  color:var(--htp-text);
+  padding:9px 12px;
+  cursor:pointer;
+  transition:.14s ease;
+}
+
+.home-menu-list button:active{
+  transform:scale(.985);
+  background:rgba(255,255,255,.045);
+}
+
+.home-menu-icon{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:#151b23;
+  border:1px solid var(--htp-line);
+  font-size:18px;
+}
+
+.home-menu-list b{
+  display:block;
+  font-size:13px;
+  font-weight:750;
+}
+
+.home-menu-list small{
+  display:block;
+  margin-top:3px;
+  color:var(--htp-muted);
+  font-size:10px;
+}
+
+.home-arrow{
+  color:#697586;
+  font-size:22px;
+  text-align:right;
+}
+
+.home-power{
+  padding:15px;
+  border-radius:18px;
+  background:#10151c;
+  border:1px solid var(--htp-line);
+}
+
+.home-power>div:first-child{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+}
+
+.home-power>div:first-child b{
+  font-size:12px;
+}
+
+.home-power-bar{
+  height:6px;
+  margin-top:12px;
+  background:#202731;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.home-power-bar i{
+  display:block;
+  height:100%;
+  border-radius:inherit;
+  background:var(--htp-green);
+}
+
+.home-power-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin-top:12px;
+}
+
+.home-power-grid span{
+  color:var(--htp-muted);
+  font-size:9px;
+  text-align:center;
+}
+
+.home-power-grid b{
+  display:block;
+  color:#e9edf2;
+  font-size:12px;
+  margin-top:3px;
+}
+
+/* ---------- Shared page header ---------- */
+
+.profile-top{
+  min-height:47px;
+  display:grid;
+  grid-template-columns:42px 1fr 42px;
+  align-items:center;
+  margin-bottom:5px;
+}
+
+.page-title{
+  text-align:center;
+  font-size:17px;
+  font-weight:800;
+  letter-spacing:-.3px;
+}
+
+.back-btn,
+.refresh-btn{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  border:1px solid var(--htp-line);
+  background:#11161d;
+  color:var(--htp-text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.back-btn{font-size:24px}
+.refresh-btn{font-size:18px}
+
+/* ---------- Remove generic "hero card" feeling ---------- */
+
+.profile-hero{
+  text-align:center;
+  padding:13px 8px 18px;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+.profile-hero .avatar{
+  width:62px;
+  height:62px;
+  margin:0 auto 10px;
+  border-radius:20px;
+  background:#151b22;
+  border:1px solid var(--htp-line-strong);
+  box-shadow:0 12px 30px rgba(0,0,0,.20);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+}
+
+.profile-name{
+  font-size:20px;
+  font-weight:820;
+  letter-spacing:-.45px;
+}
+
+.profile-subtitle{
+  margin-top:4px;
+  color:var(--htp-muted);
+  font-size:11px;
+}
+
+/* ---------- Cards ---------- */
+
+.info-card,
+.xp-card{
+  margin:9px 0;
+  padding:15px;
+  border-radius:17px;
+  background:var(--htp-surface);
+  border:1px solid var(--htp-line);
+  box-shadow:none;
+}
+
+.info-title{
+  color:#edf1f5;
+  font-size:13px;
+  font-weight:760;
+}
+
+.info-desc,
+.info-card p{
+  color:var(--htp-muted);
+  font-size:11px;
+  line-height:1.5;
+}
+
+.info-row{
+  min-height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.info-row b{
+  color:#e9edf2;
+  font-size:12px;
+}
+
+.divider{
+  height:1px;
+  margin:9px 0;
+  background:var(--htp-line);
+}
+
+/* ---------- Wallet ---------- */
+
+.profile-page .profile-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:8px 0 12px;
+}
+
+.profile-page .stat-card{
+  min-height:72px;
+  padding:12px;
+  border-radius:15px;
+  background:#10151c;
+  border:1px solid var(--htp-line);
+  box-shadow:none;
+}
+
+.profile-page .stat-icon{
+  font-size:15px;
+  opacity:.8;
+}
+
+.profile-page .stat-value{
+  margin-top:4px;
+  font-size:18px;
+  font-weight:820;
+}
+
+.profile-page .stat-label{
+  margin-top:3px;
+  color:var(--htp-muted);
+  font-size:9px;
+}
+
+/* Wallet actions = one compact control surface */
+
+.profile-page .info-card:has(.primary-btn){
+  background:#10151c;
+}
+
+.profile-page .primary-btn{
+  min-height:43px;
+  border-radius:12px;
+  margin-top:8px;
+  font-size:12px;
+  font-weight:750;
+  border:1px solid rgba(39,229,138,.16);
+  background:var(--htp-green-soft);
+  color:#d9ffed;
+}
+
+.profile-page .primary-btn:active{
+  transform:scale(.985);
+}
+
+/* ---------- Deposit / Withdraw ---------- */
+
+.profile-page input,
+.profile-page textarea,
+.profile-page select{
+  box-sizing:border-box;
+  width:100%;
+  min-height:45px;
+  margin-top:8px;
+  padding:11px 12px;
+  border-radius:12px;
+  border:1px solid var(--htp-line-strong);
+  background:#0b1016;
+  color:#eef2f6;
+  outline:none;
+}
+
+.profile-page input:focus,
+.profile-page textarea:focus,
+.profile-page select:focus{
+  border-color:rgba(39,229,138,.35);
+}
+
+.ref-link{
+  margin:9px 0;
+  padding:11px 12px;
+  border-radius:12px;
+  background:#0b1016;
+  border:1px solid var(--htp-line);
+  color:#cbd3dd;
+  font-size:11px;
+  line-height:1.45;
+  word-break:break-all;
+}
+
+/* ---------- Profile ---------- */
+
+.level-badge{
+  display:inline-flex;
+  margin-top:9px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(39,229,138,.07);
+  border:1px solid rgba(39,229,138,.13);
+  color:#b8f6d5;
+  font-size:10px;
+}
+
+.xp-card{
+  background:
+    radial-gradient(circle at 90% 10%,rgba(101,170,255,.08),transparent 35%),
+    #10161d;
+  border-color:rgba(101,170,255,.12);
+}
+
+.xp-value{
+  margin-top:3px;
+  font-size:24px;
+  font-weight:850;
+}
+
+.xp-bar{
+  height:6px;
+  margin-top:13px;
+  border-radius:99px;
+  overflow:hidden;
+  background:#202731;
+}
+
+.xp-fill{
+  height:100%;
+  border-radius:inherit;
+  background:var(--htp-blue);
+}
+
+.section-title{
+  margin:20px 2px 8px;
+  color:#cbd3dd;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+}
+
+.profile-note{
+  display:flex;
+  gap:9px;
+  align-items:flex-start;
+  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.022);
+  border:1px solid var(--htp-line);
+}
+
+.profile-note p{
+  margin:3px 0 0;
+  color:var(--htp-muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+/* ---------- Referral ---------- */
+
+#ref-link{
+  background:#0b1016;
+}
+
+#ref-total,
+#ref-active,
+#ref-reward{
+  font-size:18px;
+}
+
+/* ---------- Transaction history ---------- */
+
+#transaction-history{
+  margin-top:5px;
+}
+
+#transaction-history>div{
+  border-bottom-color:var(--htp-line)!important;
+}
+
+#transaction-history a{
+  color:var(--htp-blue);
+  font-weight:650;
+}
+
+/* ---------- Bottom navigation ---------- */
+
+.htp-bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:9px;
+  transform:translateX(-50%);
+  width:min(94%,520px);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:3px;
+  padding:7px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:19px;
+  background:rgba(10,14,19,.95);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 12px 35px rgba(0,0,0,.35);
+  z-index:9999;
+}
+
+.htp-bottom-nav button{
+  min-height:45px;
+  border:0;
+  border-radius:13px;
+  background:transparent;
+  color:#707b8b;
+  padding:5px 3px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  font-size:9px;
+  cursor:pointer;
+  transition:.14s ease;
+}
+
+.htp-bottom-nav button.active{
+  color:var(--htp-green);
+  background:rgba(39,229,138,.075);
+}
+
+.htp-bottom-nav button:active{
+  transform:scale(.94);
+}
+
+.htp-bottom-nav .nav-icon{
+  font-size:18px;
+  line-height:19px;
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:430px){
+  .home-page,
+  .profile-page{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .home-balance{
+    padding:18px 15px;
+  }
+
+  .home-balance-value{
+    font-size:28px;
+  }
+
+  .home-menu-list button{
+    min-height:59px;
+  }
+
+  .profile-page .stat-card{
+    min-height:68px;
+  }
+}
+</style>
+
+</head>
 
 <body>
 <div class="container">
@@ -1412,16 +2013,16 @@ body{
 </div>
 
 <div class="htp-bottom-nav">
-  <button class="active" onclick="showHome();setActiveNav("home")">
+  <button class="active" onclick="showHome();setActiveNav('home')">
     <span class="nav-icon">⌂</span><span>Home</span>
   </button>
-  <button onclick="showWallet();setActiveNav("wallet")">
+  <button onclick="showWallet();setActiveNav('wallet')">
     <span class="nav-icon">◈</span><span>Wallet</span>
   </button>
-  <button onclick="openFeature('giveaway');setActiveNav("giveaway")">
+  <button onclick="openFeature('giveaway');setActiveNav('giveaway')">
     <span class="nav-icon">✦</span><span>Giveaway</span>
   </button>
-  <button onclick="showProfile();setActiveNav("profile")">
+  <button onclick="showProfile();setActiveNav('profile')">
     <span class="nav-icon">◎</span><span>Profile</span>
   </button>
 </div>
