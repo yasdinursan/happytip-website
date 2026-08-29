@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0b0d12">
+<title>HappyTip App</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#080a0f;color:#f5f7fb;font-family:Arial,sans-serif}
+body{min-height:100vh;padding-bottom:90px}
+.container{max-width:600px;margin:auto;padding:18px}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.logo{font-size:25px;font-weight:800}
+.logo span{color:#20d6a3}
+.user{font-size:13px;color:#8f98a8}
+.balance{
+background:linear-gradient(145deg,#151922,#0e1118);
+border:1px solid #252b38;border-radius:20px;padding:22px;margin-bottom:16px
+}
+.label{font-size:13px;color:#8f98a8}
+.amount{font-size:32px;font-weight:800;margin-top:7px}
+.symbol{color:#20d6a3}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{
+background:#11141b;border:1px solid #222936;border-radius:16px;
+padding:18px 14px;min-height:100px;text-align:left;color:#fff;
+font-size:15px;font-weight:700
+}
+.card small{display:block;color:#858e9f;font-size:12px;font-weight:400;margin-top:7px}
+.icon{font-size:25px;margin-bottom:10px}
+.section{font-size:16px;font-weight:800;margin:25px 0 12px}
+.power{
+background:linear-gradient(145deg,#151922,#0d1016);
+border:1px solid #252b38;border-radius:18px;padding:18px
+}
+.power-row{display:flex;justify-content:space-between;padding:8px 0;color:#aeb6c5;font-size:13px}
+.power-row b{color:#fff}
+.nav{
+position:fixed;bottom:0;left:0;right:0;background:#0c0f15;
+border-top:1px solid #202631;padding:10px 14px;
+display:flex;justify-content:space-around;z-index:10
+}
+.nav button{background:none;border:0;color:#7f8999;font-size:11px}
+.nav button.active{color:#20d6a3}
+.nav-icon{font-size:20px;display:block;margin-bottom:3px}
+button{font-family:inherit}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="logo">Happy<span>Tip</span></div>
+  <div class="user" id="username">Guest</div>
+</div>
+
+<div class="balance">
+  <div class="label">My HTP Balance</div>
+  <div class="amount">0 <span class="symbol">HTP</span></div>
+  <div class="label" style="margin-top:8px">Wallet balance</div>
+</div>
+
+<div class="section">Quick Actions</div>
+
+<div class="grid">
+  <button class="card" onclick="openFeature('wallet')">
+    <div class="icon">👛</div>
+    Wallet
+    <small>Manage your wallet</small>
+  </button>
+
+  <button class="card" onclick="openFeature('tip')">
+    <div class="icon">🎁</div>
+    Send Tip
+    <small>Reward someone</small>
+  </button>
+
+  <button class="card" onclick="openFeature('deposit')">
+    <div class="icon">📥</div>
+    Deposit
+    <small>Deposit HTP</small>
+  </button>
+
+  <button class="card" onclick="openFeature('withdraw')">
+    <div class="icon">💸</div>
+    Withdraw
+    <small>Withdraw HTP</small>
+  </button>
+</div>
+
+<div class="section">HappyTip</div>
+
+<div class="grid">
+  <button class="card" onclick="openFeature('missions')">
+    <div class="icon">🎯</div>
+    Missions
+    <small>Complete missions</small>
+  </button>
+
+  <button class="card" onclick="openFeature('giveaway')">
+    <div class="icon">🎁</div>
+    Giveaway
+    <small>Join active giveaways</small>
+  </button>
+
+  <button class="card" onclick="openFeature('profile')">
+    <div class="icon">👤</div>
+    My Profile
+    <small>View your profile</small>
+  </button>
+
+  <button class="card" onclick="openFeature('referral')">
+    <div class="icon">👥</div>
+    Referral
+    <small>Invite friends</small>
+  </button>
+</div>
+
+<div class="section">Giveaway Power</div>
+
+<div class="power">
+  <div class="power-row"><span>🔒 HTP Lock Power</span><b>0 / 20</b></div>
+  <div class="power-row"><span>⭐ Level Power</span><b>0 / 5</b></div>
+  <div class="power-row"><span>⚡ Activity Power</span><b>0 / 5</b></div>
+  <div class="power-row"><span>🔥 Streak Power</span><b>0 / 10</b></div>
+  <div class="power-row"><span>🌍 Community Power</span><b>0 / 10</b></div>
+  <hr style="border:0;border-top:1px solid #252b38">
+  <div class="power-row"><span>⚡ Core Power</span><b>0 / 50</b></div>
+  <div class="power-row"><span>🎟️ Final Power</span><b>0</b></div>
+</div>
+
+</div>
+
+<div class="nav">
+  <button class="active" onclick="scrollTo(0,0)">
+    <span class="nav-icon">🏠</span>Home
+  </button>
+  <button onclick="openFeature('wallet')">
+    <span class="nav-icon">👛</span>Wallet
+  </button>
+  <button onclick="openFeature('giveaway')">
+    <span class="nav-icon">🎁</span>Giveaway
+  </button>
+  <button onclick="openFeature('profile')">
+    <span class="nav-icon">👤</span>Profile
+  </button>
+</div>
+
+<script>
+const tg=window.Telegram?.WebApp;
+
+if(tg){
+  tg.ready();
+  tg.expand();
+
+  const user=tg.initDataUnsafe?.user;
+  if(user){
+    document.getElementById("username").textContent=
+      user.username ? "@"+user.username : (user.first_name||"User");
+  }
+}
+
+function openFeature(feature){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+  alert(feature.charAt(0).toUpperCase()+feature.slice(1)+" — coming next");
+}
+</script>
+
+</body>
+</html>
