@@ -831,6 +831,89 @@ select:focus{
 }
 </style>
 
+
+<style id="happytip-fast-loading">
+/* === HAPPYTIP FAST LOADING V1 === */
+
+.htp-loading{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:18px 8px;
+  color:#89939f;
+  font-size:13px;
+}
+
+.htp-loading-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#35d07f;
+  animation:htpPulse .85s infinite ease-in-out;
+}
+
+.htp-loading-dot:nth-child(2){animation-delay:.12s}
+.htp-loading-dot:nth-child(3){animation-delay:.24s}
+
+@keyframes htpPulse{
+  0%,100%{opacity:.25;transform:scale(.75)}
+  50%{opacity:1;transform:scale(1)}
+}
+
+/* Instant visual feedback when navigating */
+.profile-page,
+.container > *{
+  animation:htpInstantIn .16s ease-out;
+}
+
+@keyframes htpInstantIn{
+  from{opacity:.45;transform:translateY(3px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Disable browser tap delay */
+button,a,input{
+  touch-action:manipulation;
+}
+
+/* Prevent flash of invisible content */
+.container{
+  opacity:1!important;
+}
+
+/* Lightweight skeleton blocks */
+.htp-skeleton-line{
+  height:13px;
+  width:100%;
+  border-radius:7px;
+  background:#151b23;
+  position:relative;
+  overflow:hidden;
+}
+
+.htp-skeleton-line.small{width:42%}
+.htp-skeleton-line.medium{width:68%}
+
+.htp-skeleton-line:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.055),
+    transparent
+  );
+  transform:translateX(-100%);
+  animation:htpSkeletonMove 1.1s infinite;
+}
+
+@keyframes htpSkeletonMove{
+  to{transform:translateX(100%)}
+}
+</style>
+
 </head>
 
 <body>
