@@ -304,6 +304,209 @@ button{font-family:inherit}
   line-height:1.5;
 }
 </style>
+
+<style>
+.profile-page{padding-bottom:30px}
+
+.profile-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px
+}
+
+.page-title{font-size:18px;font-weight:800}
+
+.back-btn,.refresh-btn{
+  width:38px;height:38px;border-radius:12px;
+  border:1px solid #252b38;
+  background:#11151d;color:#fff;
+  font-size:22px
+}
+
+.refresh-btn{color:#20d6a3;font-size:20px}
+
+.profile-hero{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(32,214,163,.16),transparent 48%),
+    linear-gradient(145deg,#151922,#0d1016);
+  border:1px solid #252b38;
+  border-radius:22px;
+  padding:28px 20px 22px;
+  text-align:center;
+  overflow:hidden
+}
+
+.avatar{
+  width:68px;height:68px;
+  margin:0 auto 13px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#20d6a3,#0d9d78);
+  color:#06120f;
+  font-size:27px;
+  font-weight:900
+}
+
+.profile-name{font-size:21px;font-weight:800}
+
+.profile-subtitle{
+  color:#8995a5;
+  font-size:13px;
+  margin-top:5px
+}
+
+.level-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:14px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#101a18;
+  border:1px solid #21463c;
+  color:#9cebd4;
+  font-size:12px
+}
+
+.xp-card{
+  margin-top:14px;
+  padding:18px;
+  border-radius:20px;
+  background:#11151d;
+  border:1px solid #252b38
+}
+
+.xp-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+
+.card-label{
+  color:#8995a5;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.2px
+}
+
+.xp-value{
+  font-size:28px;
+  font-weight:900;
+  margin-top:4px
+}
+
+.xp-icon{font-size:28px}
+
+.xp-bar{
+  height:8px;
+  background:#202631;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:17px
+}
+
+.xp-fill{
+  width:0%;
+  height:100%;
+  background:#20d6a3;
+  border-radius:20px;
+  transition:width .5s ease
+}
+
+.xp-footer{
+  display:flex;
+  justify-content:space-between;
+  margin-top:9px;
+  color:#8995a5;
+  font-size:11px
+}
+
+.xp-footer b{color:#fff}
+
+.section-title{
+  font-size:15px;
+  font-weight:800;
+  margin:24px 2px 11px
+}
+
+.profile-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px
+}
+
+.stat-card{
+  background:#11141b;
+  border:1px solid #222936;
+  border-radius:17px;
+  padding:16px
+}
+
+.stat-icon{font-size:20px;margin-bottom:11px}
+
+.stat-value{font-size:20px;font-weight:900}
+
+.stat-label{
+  color:#8995a5;
+  font-size:11px;
+  margin-top:4px
+}
+
+.info-card{
+  background:#11141b;
+  border:1px solid #222936;
+  border-radius:18px;
+  padding:5px 16px
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:15px 0
+}
+
+.info-title{font-size:13px;font-weight:700}
+
+.info-desc{
+  color:#788394;
+  font-size:10px;
+  margin-top:4px
+}
+
+.info-row>b{
+  color:#20d6a3;
+  font-size:13px;
+  white-space:nowrap
+}
+
+.divider{height:1px;background:#202631}
+
+.profile-note{
+  display:flex;
+  gap:11px;
+  margin-top:14px;
+  padding:15px;
+  border-radius:16px;
+  background:#0e1715;
+  border:1px solid #1c3830
+}
+
+.profile-note>span{font-size:18px}
+
+.profile-note b{font-size:12px}
+
+.profile-note p{
+  color:#8995a5;
+  font-size:10px;
+  line-height:1.5;
+  margin:5px 0 0
+}
+</style>
 </head>
 
 <body>
@@ -431,120 +634,120 @@ function openFeature(feature){
   alert(feature.charAt(0).toUpperCase()+feature.slice(1)+" — coming next");
 }
 
-function showProfile(){
+async function showProfile(){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+
   const user=tg?.initDataUnsafe?.user || {};
   const name=user.username ? "@"+user.username : (user.first_name || "HappyTip User");
-  const first=(user.first_name || "H").charAt(0).toUpperCase();
+  const firstName=user.first_name || "U";
+  const userId=user.id;
 
   document.querySelector(".container").innerHTML=`
     <div class="profile-page">
 
       <div class="profile-top">
-        <button class="profile-btn" onclick="location.reload()">‹</button>
-        <div class="profile-title">My Profile</div>
-        <button class="profile-btn refresh" onclick="showProfile()">↻</button>
+        <button class="back-btn" onclick="location.reload()">‹</button>
+        <div class="page-title">My Profile</div>
+        <button class="refresh-btn" onclick="showProfile()">↻</button>
       </div>
 
       <div class="profile-hero">
-        <div class="profile-avatar">${first}</div>
+        <div class="avatar">${firstName.charAt(0).toUpperCase()}</div>
         <div class="profile-name">${name}</div>
-        <div class="profile-member">HappyTip Member</div>
+        <div class="profile-subtitle">HappyTip Member</div>
 
-        <div class="profile-level">
-          ⭐ <span>Level</span> <b>Loading...</b>
+        <div class="level-badge">
+          ⭐ Level <b id="profile-level">Loading...</b>
         </div>
       </div>
 
-      <div class="profile-xp">
-        <div class="xp-top">
+      <div class="xp-card">
+        <div class="xp-header">
           <div>
-            <div class="xp-label">TOTAL XP</div>
-            <div class="xp-number">Loading...</div>
+            <div class="card-label">TOTAL XP</div>
+            <div class="xp-value" id="profile-xp">Loading...</div>
           </div>
-          <div class="xp-symbol">✨</div>
+          <div class="xp-icon">✨</div>
         </div>
 
-        <div class="xp-track">
-          <div class="xp-progress"></div>
+        <div class="xp-bar">
+          <div class="xp-fill" id="profile-xp-fill"></div>
         </div>
 
-        <div class="xp-bottom">
+        <div class="xp-footer">
           <span>Level Progress</span>
-          <b>Loading...</b>
+          <b id="profile-progress">Loading...</b>
         </div>
       </div>
 
-      <div class="profile-section-title">Statistics</div>
+      <div class="section-title">Profile Statistics</div>
 
-      <div class="profile-grid">
+      <div class="profile-stats">
 
-        <div class="profile-stat">
+        <div class="stat-card">
           <div class="stat-icon">🎯</div>
-          <div class="stat-number">Loading...</div>
-          <div class="stat-name">XP Events</div>
+          <div class="stat-value" id="profile-events">—</div>
+          <div class="stat-label">XP Events</div>
         </div>
 
-        <div class="profile-stat">
+        <div class="stat-card">
           <div class="stat-icon">👥</div>
-          <div class="stat-number">Loading...</div>
-          <div class="stat-name">Referrals</div>
+          <div class="stat-value" id="profile-referrals">—</div>
+          <div class="stat-label">Referrals</div>
         </div>
 
-        <div class="profile-stat">
+        <div class="stat-card">
           <div class="stat-icon">🏆</div>
-          <div class="stat-number">Loading...</div>
-          <div class="stat-name">Missions</div>
+          <div class="stat-value" id="profile-missions">—</div>
+          <div class="stat-label">Missions</div>
         </div>
 
-        <div class="profile-stat">
+        <div class="stat-card">
           <div class="stat-icon">⚡</div>
-          <div class="stat-number">AP</div>
-          <div class="stat-name">Activity Points</div>
+          <div class="stat-value">AP</div>
+          <div class="stat-label">Activity Points</div>
         </div>
 
       </div>
 
-      <div class="profile-section-title">Progression</div>
+      <div class="section-title">Progression</div>
 
-      <div class="profile-info">
+      <div class="info-card">
 
-        <div class="info-item">
-          <div class="info-icon">⭐</div>
-          <div class="info-content">
-            <b>HappyTip Level</b>
-            <span>Permanent ecosystem progression</span>
+        <div class="info-row">
+          <div>
+            <div class="info-title">⭐ HappyTip Level</div>
+            <div class="info-desc">Permanent ecosystem progression</div>
           </div>
-          <strong>Loading...</strong>
+          <b id="info-level">—</b>
         </div>
 
-        <div class="info-line"></div>
+        <div class="divider"></div>
 
-        <div class="info-item">
-          <div class="info-icon">✨</div>
-          <div class="info-content">
-            <b>Experience Points</b>
-            <span>Earn XP through valid activity</span>
+        <div class="info-row">
+          <div>
+            <div class="info-title">✨ XP Progress</div>
+            <div class="info-desc">Earn XP through valid activity</div>
           </div>
-          <strong>Loading...</strong>
+          <b id="info-xp">—</b>
         </div>
 
-        <div class="info-line"></div>
+        <div class="divider"></div>
 
-        <div class="info-item">
-          <div class="info-icon">⚡</div>
-          <div class="info-content">
-            <b>Activity Points</b>
-            <span>Separate from XP and Level</span>
+        <div class="info-row">
+          <div>
+            <div class="info-title">⚡ Activity Points</div>
+            <div class="info-desc">Separate from XP and Level</div>
           </div>
-          <strong>AP</strong>
+          <b>AP</b>
         </div>
 
       </div>
 
       <div class="profile-note">
-        <div class="note-icon">💡</div>
+        <span>💡</span>
         <div>
-          <b>About your progression</b>
+          <b>Your progression matters</b>
           <p>XP adalah progression permanen kamu. Activity Points (AP) dihitung terpisah.</p>
         </div>
       </div>
@@ -553,6 +756,45 @@ function showProfile(){
   `;
 
   document.querySelector(".nav").style.display="none";
+
+  if(!userId){
+    document.getElementById("profile-level").textContent="Unavailable";
+    return;
+  }
+
+  try{
+    const API="https://cdt-cable-scuba-exclusion.trycloudflare.com/api/profile";
+    const response=await fetch(API+"?user_id="+encodeURIComponent(userId));
+
+    if(!response.ok) throw new Error("API HTTP "+response.status);
+
+    const data=await response.json();
+
+    if(!data.ok || !data.profile){
+      throw new Error(data.error || "Profile unavailable");
+    }
+
+    const p=data.profile;
+
+    document.getElementById("profile-level").textContent=p.level;
+    document.getElementById("profile-xp").textContent=p.xp+" XP";
+    document.getElementById("profile-progress").textContent=p.xp_progress;
+    document.getElementById("profile-xp-fill").style.width=(p.progress_percent || 0)+"%";
+
+    document.getElementById("profile-events").textContent=p.xp_events;
+    document.getElementById("profile-referrals").textContent=p.referrals;
+    document.getElementById("profile-missions").textContent=p.missions_completed;
+
+    document.getElementById("info-level").textContent="Level "+p.level;
+    document.getElementById("info-xp").textContent=p.xp_progress;
+
+  }catch(error){
+    console.error("Mini App Profile API:",error);
+
+    document.getElementById("profile-level").textContent="—";
+    document.getElementById("profile-xp").textContent="Unavailable";
+    document.getElementById("profile-progress").textContent="Unable to load";
+  }
 }
 </script>
 
