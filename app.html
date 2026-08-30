@@ -2396,6 +2396,27 @@ async function submitWithdraw(){
 
 
 
+function setActiveNav(active){
+  document.querySelectorAll(".htp-bottom-nav button").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  const map={
+    home:0,
+    wallet:1,
+    giveaway:2,
+    profile:3
+  };
+
+  const index=map[active];
+  if(index === undefined) return;
+
+  const buttons=document.querySelectorAll(".htp-bottom-nav button");
+  if(buttons[index]){
+    buttons[index].classList.add("active");
+  }
+}
+
 const tg=window.Telegram?.WebApp;
 
 if(tg){
