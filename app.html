@@ -2479,6 +2479,7 @@ function openGiveawayTelegram(chatId,messageId){
 
 async function showGiveaway(){
   if(tg) tg.HapticFeedback?.impactOccurred("light");
+  console.log("🎁 GIVEAWAY DEBUG | tg=",!!tg,"initDataLength=",(tg?.initData||"").length,"userId=",tg?.initDataUnsafe?.user?.id||null);
 
   const user=tg?.initDataUnsafe?.user || {};
   const userId=user.id;
