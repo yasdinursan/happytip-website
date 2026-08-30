@@ -3304,6 +3304,8 @@ async function showProfile(){
   }
 
   try{
+    alert("PROFILE USER ID = " + String(userId));
+
     const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/profile";
     document.getElementById("profile-progress").textContent="Connecting...";
 
