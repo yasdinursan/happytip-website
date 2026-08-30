@@ -2561,6 +2561,51 @@ body{
 }
 </style>
 
+
+<style id="happytip-profile-icons-ui">
+.htp-profile-level-icon{
+  width:20px;
+  height:20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  vertical-align:middle;
+  margin-right:5px;
+}
+.htp-profile-level-icon svg,
+.htp-inline-icon svg,
+.profile-note-icon svg{
+  width:18px;
+  height:18px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.htp-inline-icon{
+  display:inline-flex;
+  align-items:center;
+  vertical-align:middle;
+  margin-right:5px;
+}
+.profile-note-icon{
+  width:22px;
+  height:22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.xp-icon svg{
+  width:22px;
+  height:22px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+</style>
 </head>
 
 <body>
@@ -3947,7 +3992,8 @@ async function showProfile(){
         <div class="profile-subtitle">HappyTip Member</div>
 
         <div class="level-badge">
-          ⭐ Level <b id="profile-level">Loading...</b>
+          <span class="htp-profile-level-icon htp-icon-level"><svg viewBox="0 0 24 24"><path d="M12 3l2 4 4 .6-3 3 .7 4.4-3.7-2-3.7 2 .7-4.4-3-3L10 7l2-4z"/></svg></span>
+          Level <b id="profile-level">Loading...</b>
         </div>
       </div>
 
@@ -3957,7 +4003,7 @@ async function showProfile(){
             <div class="card-label">TOTAL XP</div>
             <div class="xp-value" id="profile-xp">Loading...</div>
           </div>
-          <div class="xp-icon">✨</div>
+          <div class="xp-icon htp-icon-xp"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"/></svg></div>
         </div>
 
         <div class="xp-bar">
@@ -4022,7 +4068,7 @@ async function showProfile(){
 
         <div class="info-row">
           <div>
-            <div class="info-title">⭐ HappyTip Level</div>
+            <div class="info-title"><span class="htp-inline-icon htp-icon-level"><svg viewBox="0 0 24 24"><path d="M12 3l2 4 4 .6-3 3 .7 4.4-3.7-2-3.7 2 .7-4.4-3-3L10 7l2-4z"/></svg></span> HappyTip Level</div>
             <div class="info-desc">Permanent ecosystem progression</div>
           </div>
           <b id="info-level">—</b>
@@ -4032,7 +4078,7 @@ async function showProfile(){
 
         <div class="info-row">
           <div>
-            <div class="info-title">✨ XP Progress</div>
+            <div class="info-title"><span class="htp-inline-icon htp-icon-xp"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"/></svg></span> XP Progress</div>
             <div class="info-desc">Earn XP through valid activity</div>
           </div>
           <b id="info-xp">—</b>
@@ -4042,7 +4088,7 @@ async function showProfile(){
 
         <div class="info-row">
           <div>
-            <div class="info-title">⚡ Activity Points</div>
+            <div class="info-title"><span class="htp-inline-icon htp-icon-ap"><svg viewBox="0 0 24 24"><path d="M13 2L5 13h6l-1 9 8-11h-6l1-9z"/></svg></span> Activity Points</div>
             <div class="info-desc">Separate from XP and Level</div>
           </div>
           <b>AP</b>
@@ -4051,7 +4097,7 @@ async function showProfile(){
       </div>
 
       <div class="profile-note">
-        <span>💡</span>
+        <span class="profile-note-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8c-.9.8-1.7 1.2-1.7 2.7"/><path d="M12 17h.01"/></svg></span>
         <div>
           <b>Your progression matters</b>
           <p>XP is your permanent progression. Activity Points (AP) are calculated separately.</p>
