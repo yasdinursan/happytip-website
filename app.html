@@ -3301,11 +3301,10 @@ async function showProfile(){
   try{
     const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/profile";
     const response=await fetch(
-      API,
+      API+"?user_id="+encodeURIComponent(userId),
       {
-        headers:{
-          "X-Telegram-Init-Data":tg?.initData || ""
-        }
+        method:"GET",
+        cache:"no-store"
       }
     );
 
