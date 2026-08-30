@@ -3169,7 +3169,6 @@ function shareReferral(){
 async function showProfile(){
     setActiveNav("profile");
 
-  alert("PROFILE FUNCTION RUNNING");
 
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
@@ -3294,24 +3293,19 @@ async function showProfile(){
     </div>
   `;
 
-  alert("PROFILE HTML RENDERED");
 
-  alert("PROFILE STEP 3");
 
-  document.querySelector(".nav").style.display="none";
+  const bottomNav=document.querySelector(".htp-bottom-nav");
+  if(bottomNav) bottomNav.style.display="flex";
 
-  alert("PROFILE STEP 4 | userId=" + String(userId));
 
   if(!userId){
-    alert("PROFILE STEP 5 | NO USER ID");
     document.getElementById("profile-level").textContent="Unavailable";
     return;
   }
 
-  alert("PROFILE STEP 6 | BEFORE TRY");
 
   try{
-    alert("PROFILE USER ID = " + String(userId));
 
     const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/profile";
     document.getElementById("profile-progress").textContent="Connecting...";
