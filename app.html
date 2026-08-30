@@ -3110,7 +3110,7 @@ async function showHome(){
         <div class="balance-top">
           <div>
             <div class="balance-label">MY HTP BALANCE</div>
-            <div class="balance-value">0 <span>HTP</span></div>
+            <div class="balance-value">$0.00 <span>HTP</span></div>
           </div>
           <div class="balance-network">
             <span class="network-dot"></span>
@@ -4123,8 +4123,18 @@ async function showWallet(){
     const w=data.wallet;
 
     document.getElementById("wallet-address").textContent=w.address;
-    document.getElementById("wallet-eth").textContent=w.eth_balance;
-    document.getElementById("wallet-htp").textContent=w.htp_balance;
+    const ethBalance=Number(w.eth_balance);
+    const htpBalance=Number(w.htp_balance);
+
+    document.getElementById("wallet-eth").textContent=
+      Number.isFinite(ethBalance)
+        ? ethBalance.toLocaleString("en-US",{minimumFractionDigits:4,maximumFractionDigits:4})+" ETH"
+        : String(w.eth_balance);
+
+    document.getElementById("wallet-htp").textContent=
+      Number.isFinite(htpBalance)
+        ? "$"+htpBalance.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+" HTP"
+        : String(w.htp_balance);
 
     window.happyTipWalletAddress=w.address;
 
