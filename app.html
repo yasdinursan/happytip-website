@@ -2983,6 +2983,43 @@ body{
 }
 </style>
 
+
+<style id="wallet-asset-logo-final">
+.wallet-asset-card{
+  text-align:center !important;
+}
+.wallet-asset-icon{
+  width:34px;
+  height:34px;
+  margin:0 auto 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.wallet-asset-icon svg{
+  width:34px;
+  height:34px;
+  display:block;
+}
+.wallet-asset-icon.htp-logo{
+  color:#e7b84f;
+}
+.wallet-asset-icon.htp-logo svg{
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.3));
+}
+.network-eth-icon{
+  width:20px;
+  height:20px;
+  display:inline-flex;
+  vertical-align:middle;
+  margin-right:7px;
+}
+.network-eth-icon svg{
+  width:20px;
+  height:20px;
+  display:block;
+}
+</style>
 </head>
 
 <body>
@@ -3072,25 +3109,7 @@ async function showHome(){
       <div class="home-balance-card">
         <div class="balance-top">
           <div>
-            <div class="balance-label"><span class="htp-balance-logo"><span class="htp-token-logo" aria-label="HappyTip HTP">
-  <svg viewBox="0 0 64 64">
-    <defs>
-      <linearGradient id="htpLogoGold" x1="8" y1="8" x2="56" y2="56">
-        <stop offset="0%" stop-color="#ffe08a"/>
-        <stop offset="48%" stop-color="#f5b84b"/>
-        <stop offset="100%" stop-color="#d98a28"/>
-      </linearGradient>
-    </defs>
-    <circle cx="32" cy="32" r="29" fill="url(#htpLogoGold)"/>
-    <circle cx="32" cy="32" r="24" fill="none" stroke="#fff2bd" stroke-width="2"/>
-    <path d="M21 17v30M43 17v30M21 32h14a7.5 7.5 0 0 0 0-15H21M21 32h15a7.5 7.5 0 0 1 0 15H21"
-          fill="none"
-          stroke="#17130b"
-          stroke-width="4.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"/>
-  </svg>
-</span></span> MY HTP BALANCE</div>
+            <div class="balance-label">MY HTP BALANCE</div>
             <div class="balance-value">0 <span>HTP</span></div>
           </div>
           <div class="balance-network">
@@ -3110,30 +3129,7 @@ async function showHome(){
             <span>Ethereum Sepolia</span>
           </div>
         </div>
-        <div class="balance-brand">
-          <span class="htp-token-logo" aria-label="HappyTip HTP">
-  <svg viewBox="0 0 64 64">
-    <defs>
-      <linearGradient id="htpLogoGold" x1="8" y1="8" x2="56" y2="56">
-        <stop offset="0%" stop-color="#ffe08a"/>
-        <stop offset="48%" stop-color="#f5b84b"/>
-        <stop offset="100%" stop-color="#d98a28"/>
-      </linearGradient>
-    </defs>
-    <circle cx="32" cy="32" r="29" fill="url(#htpLogoGold)"/>
-    <circle cx="32" cy="32" r="24" fill="none" stroke="#fff2bd" stroke-width="2"/>
-    <path d="M21 17v30M43 17v30M21 32h14a7.5 7.5 0 0 0 0-15H21M21 32h15a7.5 7.5 0 0 1 0 15H21"
-          fill="none"
-          stroke="#17130b"
-          stroke-width="4.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"/>
-  </svg>
-</span>
-          <span>HappyTip</span>
-        </div>
       </div>
-
       <div class="home-section-title">Quick Actions</div>
 
       <div class="home-actions">
@@ -4036,14 +4032,30 @@ async function showWallet(){
 
       <div class="profile-stats">
 
-        <div class="stat-card">
-          <div class="stat-icon">Ξ</div>
+        <div class="stat-card wallet-asset-card">
+          <div class="wallet-asset-icon eth-logo">
+            <svg viewBox="0 0 64 64" aria-label="Ethereum">
+              <path d="M32 4L13 34l19 11 19-11L32 4z" fill="#aeb7c9"/>
+              <path d="M32 4v41L13 34 32 4z" fill="#dce2ed"/>
+              <path d="M32 47L13 37l19 23 19-23-19 10z" fill="#7f899d"/>
+              <path d="M32 47V37l19 0-19 10z" fill="#aeb7c9"/>
+            </svg>
+          </div>
           <div class="stat-value" id="wallet-eth">—</div>
           <div class="stat-label">ETH · Sepolia</div>
         </div>
 
-        <div class="stat-card">
-          <div class="stat-icon">🟢</div>
+        <div class="stat-card wallet-asset-card">
+          <div class="wallet-asset-icon htp-logo">
+            <svg viewBox="0 0 64 64" aria-label="HappyTip HTP">
+              <path d="M17 13v38M47 13v38M17 32h17a8.5 8.5 0 0 0 0-17H17M17 32h18a8.5 8.5 0 0 1 0 17H17"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="stat-value" id="wallet-htp">—</div>
           <div class="stat-label">HTP</div>
         </div>
@@ -4070,9 +4082,19 @@ async function showWallet(){
       </div>
 
       <div class="info-card">
-        <div class="info-title">🔵 Network</div>
+        <div class="info-title">
+          <span class="network-eth-icon">
+            <svg viewBox="0 0 64 64" aria-label="Ethereum">
+              <path d="M32 4L13 34l19 11 19-11L32 4z" fill="#aeb7c9"/>
+              <path d="M32 4v41L13 34 32 4z" fill="#dce2ed"/>
+              <path d="M32 47L13 37l19 23 19-23-19 10z" fill="#7f899d"/>
+              <path d="M32 47V37l19 0-19 10z" fill="#aeb7c9"/>
+            </svg>
+          </span>
+          Ethereum Network
+        </div>
         <div class="info-row">
-          <span>Ethereum Network</span>
+          <span>Ethereum</span>
           <b>Sepolia</b>
         </div>
         <p>Only use Ethereum Sepolia assets with this wallet.</p>
