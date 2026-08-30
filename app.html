@@ -2606,6 +2606,241 @@ body{
   stroke-linejoin:round;
 }
 </style>
+
+<style id="happytip-pages-visual-upgrade">
+/* ============================================================
+   HAPPYTIP — WALLET / GIVEAWAY / PROFILE VISUAL UPGRADE
+   VISUAL ONLY — NO JS / API / HANDLER CHANGES
+   ============================================================ */
+
+/* Page backgrounds */
+.wallet-page,
+.giveaway-page,
+.profile-page{
+  background:
+    radial-gradient(circle at 50% -8%, rgba(91,72,180,.13), transparent 36%),
+    linear-gradient(180deg,#111722 0%,#0e141e 48%,#0b1119 100%) !important;
+  color:#eef2f8 !important;
+  min-height:100vh;
+}
+
+/* Top bars */
+.wallet-page .profile-top,
+.giveaway-page .profile-top,
+.profile-page .profile-top{
+  background:rgba(17,23,34,.78) !important;
+  border-bottom:1px solid rgba(255,255,255,.065) !important;
+}
+
+/* Page titles */
+.wallet-page .page-title,
+.giveaway-page .page-title,
+.profile-page .page-title{
+  color:#f1f4f8 !important;
+  font-size:19px !important;
+  font-weight:800 !important;
+  letter-spacing:-.2px;
+}
+
+/* Generic cards */
+.wallet-page .card,
+.wallet-page .info-card,
+.wallet-page .wallet-card,
+.wallet-page .balance-card,
+.giveaway-page .card,
+.giveaway-page .info-card,
+.giveaway-page .giveaway-card,
+.giveaway-page .power-card,
+.profile-page .card,
+.profile-page .info-card,
+.profile-page .stat-card,
+.profile-page .xp-card,
+.profile-page .profile-note,
+.profile-page .profile-referral-card{
+  background:
+    linear-gradient(145deg,#192130,#121925) !important;
+  border:1px solid rgba(255,255,255,.075) !important;
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.025) !important;
+  border-radius:18px !important;
+}
+
+/* Text hierarchy */
+.wallet-page .card-label,
+.giveaway-page .card-label,
+.profile-page .card-label{
+  color:#9eabbc !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:.55px;
+}
+
+.wallet-page .stat-value,
+.giveaway-page .stat-value,
+.profile-page .stat-value{
+  color:#f3f6fa !important;
+  font-size:19px !important;
+  font-weight:800 !important;
+}
+
+.wallet-page .stat-label,
+.giveaway-page .stat-label,
+.profile-page .stat-label{
+  color:#9ca8b9 !important;
+  font-size:12px !important;
+}
+
+/* Balance / main values */
+.wallet-page .balance-value,
+.wallet-page .amount,
+.giveaway-page .amount,
+.profile-page .xp-value{
+  color:#f4f7fb !important;
+  font-weight:850 !important;
+}
+
+/* Secondary descriptions */
+.wallet-page small,
+.giveaway-page small,
+.profile-page small,
+.wallet-page .info-desc,
+.giveaway-page .info-desc,
+.profile-page .info-desc{
+  color:#9da9ba !important;
+}
+
+/* Dividers */
+.wallet-page .divider,
+.giveaway-page .divider,
+.profile-page .divider{
+  background:rgba(255,255,255,.065) !important;
+}
+
+/* Buttons */
+.wallet-page button,
+.giveaway-page button,
+.profile-page button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+.wallet-page .primary-btn,
+.giveaway-page .primary-btn,
+.profile-page .primary-btn{
+  border-radius:14px !important;
+  font-weight:750 !important;
+}
+
+/* Back / refresh */
+.wallet-page .back-btn,
+.wallet-page .refresh-btn,
+.giveaway-page .back-btn,
+.giveaway-page .refresh-btn,
+.profile-page .back-btn,
+.profile-page .refresh-btn{
+  background:rgba(255,255,255,.045) !important;
+  border:1px solid rgba(255,255,255,.065) !important;
+  color:#d8dfeb !important;
+}
+
+/* Profile */
+.profile-page .profile-hero{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(117,91,220,.13),transparent 55%) !important;
+}
+
+.profile-page .profile-name{
+  color:#f3f6fa !important;
+  font-size:20px !important;
+  font-weight:800 !important;
+}
+
+.profile-page .profile-subtitle{
+  color:#929fb1 !important;
+  font-size:13px !important;
+}
+
+.profile-page .section-title{
+  color:#dce4ef !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+}
+
+/* XP */
+.profile-page .xp-card{
+  padding:18px !important;
+}
+
+.profile-page .xp-fill{
+  background:linear-gradient(90deg,#8d72ff,#b69cff) !important;
+}
+
+/* Giveaway */
+.giveaway-page .section-title{
+  color:#dfe6f0 !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+}
+
+.giveaway-page .power-progress-fill{
+  background:linear-gradient(90deg,#9a7cff,#c19cff) !important;
+}
+
+/* Wallet inputs */
+.wallet-page input,
+.wallet-page textarea,
+.wallet-page select{
+  background:#121925 !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  color:#eef2f8 !important;
+  border-radius:13px !important;
+}
+
+.wallet-page input::placeholder,
+.wallet-page textarea::placeholder{
+  color:#697689 !important;
+}
+
+/* Bottom navigation */
+.htp-bottom-nav{
+  background:rgba(17,23,34,.94) !important;
+  border-top:1px solid rgba(255,255,255,.075) !important;
+  box-shadow:0 -8px 30px rgba(0,0,0,.16);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.htp-bottom-nav button{
+  color:#7f8b9d !important;
+}
+
+.htp-bottom-nav button.active{
+  color:#f0c15b !important;
+}
+
+/* Mobile */
+@media(max-width:480px){
+  .wallet-page,
+  .giveaway-page,
+  .profile-page{
+    padding-bottom:105px !important;
+  }
+
+  .wallet-page .page-title,
+  .giveaway-page .page-title,
+  .profile-page .page-title{
+    font-size:18px !important;
+  }
+
+  .wallet-page .card,
+  .giveaway-page .card,
+  .profile-page .stat-card,
+  .profile-page .info-card{
+    border-radius:17px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
