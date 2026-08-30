@@ -2417,6 +2417,14 @@ if(tg){
   }
 }
 
+// Initial Mini App render
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", ()=>showHome(), {once:true});
+}else{
+  showHome();
+}
+
+
 function openFeature(feature){
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
