@@ -2520,6 +2520,47 @@ body{
 }
 </style>
 
+
+
+<style id="happytip-profile-referral-card">
+.profile-referral-card{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin:16px 0 4px;
+  padding:14px 15px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.075);
+  background:linear-gradient(145deg,#171e2b,#111722);
+  color:#eef2f8;
+  text-align:left;
+  box-shadow:0 8px 24px rgba(0,0,0,.16);
+}
+.profile-referral-card:active{
+  transform:scale(.985);
+}
+.profile-referral-text{
+  flex:1;
+  min-width:0;
+}
+.profile-referral-text b{
+  display:block;
+  font-size:15px;
+  font-weight:750;
+}
+.profile-referral-text small{
+  display:block;
+  margin-top:4px;
+  color:#9ca8ba;
+  font-size:12px;
+}
+.profile-referral-card .home-arrow{
+  font-size:25px;
+  color:#7f8a9d;
+}
+</style>
+
 </head>
 
 <body>
@@ -3958,6 +3999,22 @@ async function showProfile(){
         </div>
 
       </div>
+
+      <button class="profile-referral-card" onclick="showReferral()">
+        <div class="htp-ui-icon htp-icon-referral">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="8" r="3"/>
+            <circle cx="17" cy="10" r="2.5"/>
+            <path d="M3.5 19c.7-3.2 2.5-5 5.5-5s4.8 1.8 5.5 5"/>
+            <path d="M15 15c2.6.1 4.2 1.4 5 4"/>
+          </svg>
+        </div>
+        <div class="profile-referral-text">
+          <b>Referral Program</b>
+          <small>Invite friends and earn rewards</small>
+        </div>
+        <span class="home-arrow">›</span>
+      </button>
 
       <div class="section-title">Progression</div>
 
