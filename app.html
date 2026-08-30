@@ -3296,12 +3296,19 @@ async function showProfile(){
 
   alert("PROFILE HTML RENDERED");
 
+  alert("PROFILE STEP 3");
+
   document.querySelector(".nav").style.display="none";
 
+  alert("PROFILE STEP 4 | userId=" + String(userId));
+
   if(!userId){
+    alert("PROFILE STEP 5 | NO USER ID");
     document.getElementById("profile-level").textContent="Unavailable";
     return;
   }
+
+  alert("PROFILE STEP 6 | BEFORE TRY");
 
   try{
     alert("PROFILE USER ID = " + String(userId));
