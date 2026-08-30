@@ -2185,7 +2185,12 @@ async function showWithdraw(){
     const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/wallet";
 
     const response=await fetch(
-      API+"?user_id="+encodeURIComponent(userId)
+      API,
+      {
+        headers:{
+          "X-Telegram-Init-Data":tg?.initData || ""
+        }
+      }
     );
 
     if(!response.ok){
@@ -2440,7 +2445,200 @@ function openFeature(feature){
     return;
   }
 
+  if(feature === "giveaway"){
+    showGiveaway();
+    return;
+  }
+
   alert(feature.charAt(0).toUpperCase()+feature.slice(1)+" — coming next");
+}
+
+
+function openGiveawayTelegram(chatId,messageId){
+  if(!chatId || !messageId){
+    alert("❌ Giveaway message unavailable.");
+    return;
+  }
+
+  const id=String(chatId);
+  const mid=String(messageId);
+
+  if(!id.startsWith("-100")){
+    alert("❌ Giveaway message link unavailable.");
+    return;
+  }
+
+  const link="https://t.me/c/"+id.slice(4)+"/"+mid;
+
+  if(tg?.openTelegramLink){
+    tg.openTelegramLink(link);
+  }else{
+    window.open(link,"_blank");
+  }
+}
+
+async function showGiveaway(){
+  if(tg) tg.HapticFeedback?.impactOccurred("light");
+
+  const user=tg?.initDataUnsafe?.user || {};
+  const userId=user.id;
+
+  document.querySelector(".container").innerHTML=`
+    <div class="profile-page">
+      <div class="profile-top">
+        <button class="back-btn" onclick="showHome()">‹</button>
+        <div class="page-title">Giveaway</div>
+        <button class="refresh-btn" onclick="showGiveaway()">↻</button>
+      </div>
+
+      <div class="profile-hero">
+        <div class="avatar">🎁</div>
+        <div class="profile-name">HappyTip Giveaway</div>
+        <div class="profile-subtitle">Active Giveaways</div>
+      </div>
+
+      <div id="giveaway-content">
+        <div class="info-card">
+          <div class="info-title">⏳ Loading Giveaway...</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/giveaway";
+
+  try{
+    const response=await fetch(
+      API,
+      {
+        headers:{
+          "X-Telegram-Init-Data":tg?.initData || ""
+        }
+      }
+    );
+
+    if(!response.ok){
+      throw new Error("API HTTP "+response.status);
+    }
+
+    const data=await response.json();
+
+    if(!data.ok){
+      throw new Error(data.error || "Giveaway unavailable");
+    }
+
+    const giveaways=data.giveaways || [];
+
+    if(!giveaways.length){
+      document.getElementById("giveaway-content").innerHTML=`
+        <div class="info-card">
+          <div class="info-title">🎁 No Active Giveaway</div>
+          <p>There are currently no active Giveaways.</p>
+        </div>
+      `;
+      return;
+    }
+
+    document.getElementById("giveaway-content").innerHTML=
+      giveaways.map(g=>{
+        const p=g.my_power || {};
+        const joined=g.joined;
+
+        return `
+          <div class="info-card">
+            <div class="info-title">🎁 Giveaway</div>
+
+            <div class="info-row">
+              <span>Prize</span>
+              <b>${g.total_reward} HTP</b>
+            </div>
+
+            <div class="info-row">
+              <span>Winners</span>
+              <b>${g.winner_count}</b>
+            </div>
+
+            <div class="info-row">
+              <span>Participants</span>
+              <b>${g.participant_count}</b>
+            </div>
+
+            <div class="info-row">
+              <span>Status</span>
+              <b>${joined ? "✅ JOINED" : "⚪ NOT JOINED"}</b>
+            </div>
+
+            ${
+              joined ? `
+                <div style="margin-top:14px">
+                  <div class="info-title">⚡ My Giveaway Power</div>
+
+                  <div class="info-row">
+                    <span>🔒 Lock Power</span>
+                    <b>${p.lock_power} / 20</b>
+                  </div>
+
+                  <div class="info-row">
+                    <span>⭐ Level Power</span>
+                    <b>${p.level_power} / 5</b>
+                  </div>
+
+                  <div class="info-row">
+                    <span>⚡ Activity Power</span>
+                    <b>${p.activity_power} / 10</b>
+                  </div>
+
+                  <div class="info-row">
+                    <span>🔥 Streak Power</span>
+                    <b>${p.streak_power} / 10</b>
+                  </div>
+
+                  <hr style="border:0;border-top:1px solid #252b38;margin:12px 0">
+
+                  <div class="info-row">
+                    <span>🛡️ Core Power</span>
+                    <b>${p.core_power} / 50</b>
+                  </div>
+
+                  <div class="info-row">
+                    <span>🃏 Card Modifier</span>
+                    <b>+${p.card_modifier}</b>
+                  </div>
+
+                  <div class="info-row">
+                    <span>🎟️ Final Power</span>
+                    <b>${p.final_power}</b>
+                  </div>
+
+                  <div class="info-row">
+                    <span>💰 HTP Locked</span>
+                    <b>${p.htp_locked_amount} HTP</b>
+                  </div>
+                </div>
+              ` : `
+                <button
+                  class="primary-btn"
+                  onclick="openGiveawayTelegram('${g.chat_id}','${g.message_id}')"
+                >
+                  🎁 JOIN GIVEAWAY
+                </button>
+              `
+            }
+          </div>
+        `;
+      }).join("");
+
+  }catch(e){
+    console.error("Giveaway API:",e);
+
+    document.getElementById("giveaway-content").innerHTML=`
+      <div class="info-card">
+        <div class="info-title">⚠️ Giveaway Unavailable</div>
+        <p>${e.message || "Failed to load Giveaway data."}</p>
+        <button class="primary-btn" onclick="showGiveaway()">↻ Retry</button>
+      </div>
+    `;
+  }
 }
 
 async function showDeposit(){
