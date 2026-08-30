@@ -47,6 +47,72 @@ display:flex;justify-content:space-around;z-index:10
 .nav button.active{color:#20d6a3}
 .nav-icon{font-size:20px;display:block;margin-bottom:3px}
 button{font-family:inherit}
+
+/* =========================================================
+   FINAL HTP / ETH LOGO UI
+   Visual only — no JS/API changes
+   ========================================================= */
+
+/* HTP symbol: clean geometric HTP mark, NOT letter B */
+.htp-token-logo{
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:9px !important;
+  background:linear-gradient(145deg,#f7c968,#d9942d) !important;
+  box-shadow:0 3px 10px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+.htp-token-logo svg{
+  width:22px !important;
+  height:22px !important;
+  display:block !important;
+}
+.htp-token-logo svg circle{
+  display:none !important;
+}
+.htp-token-logo svg path{
+  stroke:#17130b !important;
+  stroke-width:3.2 !important;
+  fill:none !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+}
+
+/* Home balance: no token icon */
+.home-page .htp-currency-logo{
+  display:none !important;
+}
+
+/* Home balance: no HappyTip branding row */
+.home-page .balance-brand{
+  display:none !important;
+}
+
+/* Ethereum logo */
+.htp-eth-logo{
+  width:22px !important;
+  height:22px !important;
+  min-width:22px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  vertical-align:middle !important;
+}
+.htp-eth-logo svg{
+  width:22px !important;
+  height:22px !important;
+  display:block !important;
+}
+.htp-eth-logo .eth-main{
+  fill:#aeb7c8 !important;
+}
+.htp-eth-logo .eth-light{
+  fill:#dce3ef !important;
+}
+
 </style>
 
 <style>
@@ -3025,25 +3091,7 @@ async function showHome(){
           stroke-linejoin="round"/>
   </svg>
 </span></span> MY HTP BALANCE</div>
-            <div class="balance-value">0 <span class="htp-currency"><span class="htp-currency-logo"><span class="htp-token-logo" aria-label="HappyTip HTP">
-  <svg viewBox="0 0 64 64">
-    <defs>
-      <linearGradient id="htpLogoGold" x1="8" y1="8" x2="56" y2="56">
-        <stop offset="0%" stop-color="#ffe08a"/>
-        <stop offset="48%" stop-color="#f5b84b"/>
-        <stop offset="100%" stop-color="#d98a28"/>
-      </linearGradient>
-    </defs>
-    <circle cx="32" cy="32" r="29" fill="url(#htpLogoGold)"/>
-    <circle cx="32" cy="32" r="24" fill="none" stroke="#fff2bd" stroke-width="2"/>
-    <path d="M21 17v30M43 17v30M21 32h14a7.5 7.5 0 0 0 0-15H21M21 32h15a7.5 7.5 0 0 1 0 15H21"
-          fill="none"
-          stroke="#17130b"
-          stroke-width="4.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"/>
-  </svg>
-</span></span>HTP</span></div>
+            <div class="balance-value">0 <span>HTP</span></div>
           </div>
           <div class="balance-network">
             <span class="network-dot"></span>
