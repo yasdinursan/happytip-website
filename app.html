@@ -2160,6 +2160,366 @@ body{
 }
 </style>
 
+
+<style id="happytip-home-final-visual">
+.home-page{
+  background:
+    radial-gradient(circle at 50% -15%,rgba(106,82,220,.22),transparent 38%),
+    radial-gradient(circle at 100% 35%,rgba(48,148,190,.08),transparent 35%),
+    linear-gradient(180deg,#151b28 0%,#101621 55%,#0d131d 100%) !important;
+  min-height:100vh;
+  padding:18px 15px 110px !important;
+  color:#eef3fb !important;
+}
+
+.home-page .header{
+  margin-bottom:18px !important;
+}
+
+.home-page .logo{
+  font-size:27px !important;
+  font-weight:850 !important;
+  letter-spacing:-1px !important;
+}
+
+.home-welcome{
+  margin-top:3px;
+  color:#7f8ca1;
+  font-size:12px;
+  font-weight:600;
+}
+
+.home-page .user{
+  color:#d7deea !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+}
+
+.home-balance-card{
+  padding:20px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#202a3b,#151d2b);
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 16px 40px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.045);
+}
+
+.balance-top{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.balance-label{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  color:#8794a9;
+}
+
+.balance-value{
+  margin-top:5px;
+  font-size:29px;
+  line-height:1.1;
+  font-weight:850;
+  letter-spacing:-.8px;
+}
+
+.balance-value span{
+  font-size:14px;
+  color:#9aa7ba;
+  font-weight:700;
+}
+
+.balance-network{
+  font-size:10px;
+  color:#9eabbc;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 9px;
+  border-radius:10px;
+  background:rgba(255,255,255,.045);
+}
+
+.network-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#5ee6a8;
+  box-shadow:0 0 8px rgba(94,230,168,.6);
+}
+
+.balance-brand{
+  margin-top:19px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#cbd4e2;
+  font-size:13px;
+  font-weight:750;
+}
+
+.htp-mini-logo{
+  width:25px;
+  height:25px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#e5bd63,#a77b2d);
+  color:#17120a;
+  font-weight:900;
+}
+
+.home-section-title{
+  margin:23px 3px 11px !important;
+  font-size:14px !important;
+  color:#dbe3ee !important;
+  font-weight:800 !important;
+  letter-spacing:.2px;
+}
+
+.home-actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.home-action-card{
+  width:100%;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:18px;
+  background:linear-gradient(145deg,#1a2231,#141b27);
+  min-height:76px;
+  padding:13px 14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#eef3fb;
+  text-align:left;
+  box-shadow:0 8px 25px rgba(0,0,0,.14);
+}
+
+.home-action-card:active{
+  transform:scale(.985);
+}
+
+.home-action-text{
+  flex:1;
+  min-width:0;
+}
+
+.home-action-text b{
+  display:block;
+  font-size:16px;
+  font-weight:800;
+}
+
+.home-action-text small{
+  display:block;
+  margin-top:4px;
+  color:#929fb2;
+  font-size:12px;
+  font-weight:550;
+}
+
+.home-arrow{
+  font-size:25px;
+  color:#69778d;
+  line-height:1;
+}
+
+.home-power-card{
+  padding:16px;
+  border-radius:21px;
+  background:linear-gradient(145deg,#1b2433,#131a26);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 12px 30px rgba(0,0,0,.17);
+}
+
+.core-power-header{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.core-icon{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#f1c762;
+  background:rgba(241,199,98,.09);
+  border:1px solid rgba(241,199,98,.13);
+}
+
+.core-icon svg{
+  width:22px;
+  height:22px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.core-title{
+  font-size:15px;
+  font-weight:800;
+}
+
+.core-subtitle{
+  margin-top:3px;
+  color:#8491a5;
+  font-size:11px;
+}
+
+.core-value{
+  margin-left:auto;
+  font-size:16px;
+  font-weight:850;
+  color:#f4f6fa;
+}
+
+.core-value span{
+  color:#78869a;
+  font-size:12px;
+}
+
+.power-progress{
+  height:6px;
+  margin:15px 1px 14px;
+  border-radius:99px;
+  overflow:hidden;
+  background:#0c121b;
+}
+
+.power-progress-fill{
+  width:0%;
+  height:100%;
+  border-radius:99px;
+  background:linear-gradient(90deg,#c29b4d,#f1ce78);
+}
+
+.power-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.power-item{
+  min-height:61px;
+  padding:9px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.045);
+}
+
+.power-item-icon{
+  width:32px;
+  height:32px;
+  min-width:32px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.035);
+}
+
+.power-item-icon svg{
+  width:17px;
+  height:17px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.power-item b{
+  display:block;
+  font-size:13px;
+  color:#edf2f8;
+}
+
+.power-item small{
+  display:block;
+  margin-top:3px;
+  font-size:10px;
+  color:#7f8ca0;
+}
+
+.htp-icon-tip{color:#f1c15d}
+.htp-icon-mission{color:#5ee6a8}
+.htp-icon-ap{color:#51d8ff}
+.htp-icon-level{color:#f1c762}
+.htp-icon-lock{color:#7eaaff}
+.htp-icon-streak{color:#ff9a55}
+.htp-icon-community{color:#8aa9ff}
+.htp-icon-final{color:#cf9aff}
+
+.info-strip{
+  display:none;
+}
+
+.home-info-strip{
+  margin-top:13px;
+  padding:13px 14px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border-radius:16px;
+  background:rgba(94,230,168,.045);
+  border:1px solid rgba(94,230,168,.08);
+}
+
+.info-strip-icon{
+  width:32px;
+  height:32px;
+  min-width:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#5ee6a8;
+}
+
+.info-strip-icon svg{
+  width:19px;
+  height:19px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+}
+
+.home-info-strip b{
+  display:block;
+  font-size:12px;
+  color:#dce6e2;
+}
+
+.home-info-strip span{
+  display:block;
+  margin-top:3px;
+  font-size:10px;
+  color:#7f9189;
+}
+
+@media(max-width:380px){
+  .home-page{padding-left:12px !important;padding-right:12px !important}
+  .balance-value{font-size:26px}
+  .power-item{padding:8px}
+  .power-item small{font-size:9px}
+}
+</style>
+
 </head>
 
 <body>
@@ -2234,55 +2594,199 @@ body{
 
 async function showHome(){
   if(tg) tg.HapticFeedback?.impactOccurred("light");
+
   document.querySelector(".container").innerHTML=`
     <div class="home-page">
+
       <div class="header">
-        <div class="logo">Happy<span>Tip</span></div>
+        <div>
+          <div class="logo">Happy<span>Tip</span></div>
+          <div class="home-welcome">Your Web3 tipping wallet</div>
+        </div>
         <div class="user" id="username">Guest</div>
       </div>
 
-      <div class="home-balance">
-        <div class="home-balance-label">My HTP Balance</div>
-        <div class="home-balance-value">0 <span>HTP</span></div>
-        <div class="home-balance-network">Ethereum Sepolia</div>
-      </div>
-
-      <div class="home-section-title">HappyTip</div>
-      <div class="home-menu-list">
-        <button onclick="openFeature('tip')">
-          <span class="home-menu-icon">♥</span>
-          <span><b>Send Tip</b><small>Send HTP to someone</small></span>
-          <span class="home-arrow">›</span>
-        </button>
-        
-        <button onclick="openFeature('missions')">
-          <span class="home-menu-icon">✓</span>
-          <span><b>Missions</b><small>Complete missions and earn rewards</small></span>
-          <span class="home-arrow">›</span>
-        </button>
-        <button onclick="showReferral()">
-          <span class="home-menu-icon">↗</span>
-          <span><b>Referral</b><small>Invite friends to HappyTip</small></span>
-          <span class="home-arrow">›</span>
-        </button>
-      </div>
-
-
-      <div class="home-power">
-        <div><span>Core Power</span><b>0 / 50</b></div>
-        <div class="home-power-bar"><i style="width:0%"></i></div>
-        <div class="home-power-grid">
-          <span>Lock <b>0</b></span>
-          <span>Level <b>0</b></span>
-          <span>Activity <b>0</b></span>
-          <span>Streak <b>0</b></span>
+      <div class="home-balance-card">
+        <div class="balance-top">
+          <div>
+            <div class="balance-label">MY HTP BALANCE</div>
+            <div class="balance-value">0 <span>HTP</span></div>
+          </div>
+          <div class="balance-network">
+            <span class="network-dot"></span>
+            Ethereum Sepolia
+          </div>
+        </div>
+        <div class="balance-brand">
+          <div class="htp-mini-logo">H</div>
+          <span>HappyTip</span>
         </div>
       </div>
-    </div>`;
-  document.querySelector(".nav")?.remove();
-  setActiveNav("home");
-}
 
+      <div class="home-section-title">Quick Actions</div>
+
+      <div class="home-actions">
+
+        <button class="home-action-card" onclick="openFeature('tip')">
+          <div class="htp-ui-icon htp-icon-tip">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 4L10 14"/>
+              <path d="M20 4l-3 12-5-2-2-5 10-5z"/>
+              <path d="M10 14l-3 3"/>
+            </svg>
+          </div>
+          <div class="home-action-text">
+            <b>Send Tip</b>
+            <small>Send HTP to someone</small>
+          </div>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button class="home-action-card" onclick="openFeature('missions')">
+          <div class="htp-ui-icon htp-icon-mission">
+            <svg viewBox="0 0 24 24">
+              <rect x="4" y="4" width="16" height="16" rx="4"/>
+              <path d="M8 12l2.5 2.5L16 9"/>
+            </svg>
+          </div>
+          <div class="home-action-text">
+            <b>Missions</b>
+            <small>Complete missions and earn rewards</small>
+          </div>
+          <span class="home-arrow">›</span>
+        </button>
+
+      </div>
+
+      <div class="home-section-title">Giveaway Power</div>
+
+      <div class="home-power-card">
+
+        <div class="core-power-header">
+          <div class="core-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3l2.2 5.2L20 10l-5.8 1.8L12 17l-2.2-5.2L4 10l5.8-1.8L12 3z"/>
+              <path d="M19 16l.8 1.8L22 18.5l-2.2.7L19 21l-.8-1.8-2.2-.7 2.2-.7L19 16z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="core-title">Core Power</div>
+            <div class="core-subtitle">Your current Giveaway strength</div>
+          </div>
+          <div class="core-value">0 <span>/ 50</span></div>
+        </div>
+
+        <div class="power-progress">
+          <div class="power-progress-fill"></div>
+        </div>
+
+        <div class="power-grid">
+
+          <div class="power-item">
+            <div class="power-item-icon htp-icon-lock">
+              <svg viewBox="0 0 24 24">
+                <rect x="5" y="10" width="14" height="10" rx="2"/>
+                <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+              </svg>
+            </div>
+            <div>
+              <b>0 / 20</b>
+              <small>Lock Power</small>
+            </div>
+          </div>
+
+          <div class="power-item">
+            <div class="power-item-icon htp-icon-level">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l2 4 4 .6-3 3 .7 4.4-3.7-2-3.7 2 .7-4.4-3-3L10 7l2-4z"/>
+              </svg>
+            </div>
+            <div>
+              <b>0 / 5</b>
+              <small>Level Power</small>
+            </div>
+          </div>
+
+          <div class="power-item">
+            <div class="power-item-icon htp-icon-ap">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 2L5 13h6l-1 9 8-11h-6l1-9z"/>
+              </svg>
+            </div>
+            <div>
+              <b>0 / 5</b>
+              <small>Activity Power</small>
+            </div>
+          </div>
+
+          <div class="power-item">
+            <div class="power-item-icon htp-icon-streak">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 2c.5 4-2 5-2 8 0 1.6 1.1 2.8 2.7 2.8 1.4 0 2.3-.8 2.8-2.1 1.5 1.8 2.2 3.3 2.2 5.1A6.7 6.7 0 0 1 12 22a7 7 0 0 1-7-7c0-3.1 1.8-5.8 4.6-7.9-.2 2.2.5 3.5 1.7 4.2-.2-3.5.4-6.2 1.7-9.3z"/>
+              </svg>
+            </div>
+            <div>
+              <b>0 / 10</b>
+              <small>Streak Power</small>
+            </div>
+          </div>
+
+          <div class="power-item">
+            <div class="power-item-icon htp-icon-community">
+              <svg viewBox="0 0 24 24">
+                <circle cx="9" cy="8" r="3"/>
+                <circle cx="17" cy="10" r="2.5"/>
+                <path d="M3.5 19c.7-3.2 2.5-5 5.5-5s4.8 1.8 5.5 5"/>
+                <path d="M15 15c2.6.1 4.2 1.4 5 4"/>
+              </svg>
+            </div>
+            <div>
+              <b>0 / 10</b>
+              <small>Community Power</small>
+            </div>
+          </div>
+
+          <div class="power-item">
+            <div class="power-item-icon htp-icon-final">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l2.4 5.1L20 9l-4 3.8.9 5.7-4.9-2.7-4.9 2.7.9-5.7L4 9l5.6-.9L12 3z"/>
+              </svg>
+            </div>
+            <div>
+              <b>0</b>
+              <small>Final Power</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="home-info-strip">
+        <div class="info-strip-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 10v6"/>
+            <path d="M12 7h.01"/>
+          </svg>
+        </div>
+        <div>
+          <b>Build your Giveaway Power</b>
+          <span>Lock HTP and stay active to increase your chances.</span>
+        </div>
+      </div>
+
+    </div>
+  `;
+
+  const nav=document.querySelector(".htp-bottom-nav");
+  if(nav) nav.style.display="flex";
+
+  const username=document.getElementById("username");
+  const user=tg?.initDataUnsafe?.user;
+  if(username && user){
+    username.textContent=user.username ? "@"+user.username : (user.first_name || "Guest");
+  }
+}
 async function showWithdraw(){
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
