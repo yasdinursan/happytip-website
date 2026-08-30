@@ -3300,13 +3300,23 @@ async function showProfile(){
 
   try{
     const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/profile";
+    document.getElementById("profile-progress").textContent="Connecting...";
+
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),10000);
+
     const response=await fetch(
       API+"?user_id="+encodeURIComponent(userId),
       {
         method:"GET",
-        cache:"no-store"
+        cache:"no-store",
+        signal:controller.signal
       }
     );
+
+    clearTimeout(timeout);
+
+    document.getElementById("profile-progress").textContent="Reading data...";
 
     if(!response.ok) throw new Error("API HTTP "+response.status);
 
@@ -3339,6 +3349,16 @@ async function showProfile(){
 
   }catch(error){
     console.error("Mini App Profile API:",error);
+
+    const debugMsg=error?.name==="AbortError"
+      ? "Profile API timeout setelah 10 detik"
+      : String(error?.message || error);
+
+    const debugProgress=document.getElementById("profile-progress");
+    if(debugProgress) debugProgress.textContent=debugMsg;
+
+    const debugXp=document.getElementById("profile-xp");
+    if(debugXp) debugXp.textContent="ERROR";
 
     const level=document.getElementById("profile-level");
     const xp=document.getElementById("profile-xp");
