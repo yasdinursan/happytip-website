@@ -3168,6 +3168,9 @@ function shareReferral(){
 
 async function showProfile(){
     setActiveNav("profile");
+
+  alert("PROFILE FUNCTION RUNNING");
+
   if(tg) tg.HapticFeedback?.impactOccurred("light");
 
   const user=tg?.initDataUnsafe?.user || {};
