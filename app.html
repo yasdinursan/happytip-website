@@ -3340,9 +3340,25 @@ async function showProfile(){
   }catch(error){
     console.error("Mini App Profile API:",error);
 
-    document.getElementById("profile-level").textContent="—";
-    document.getElementById("profile-xp").textContent="Unavailable";
-    document.getElementById("profile-progress").textContent="Unable to load";
+    const level=document.getElementById("profile-level");
+    const xp=document.getElementById("profile-xp");
+    const progress=document.getElementById("profile-progress");
+
+    if(level) level.textContent="—";
+    if(xp) xp.textContent="Unavailable";
+    if(progress) progress.textContent="Unable to load";
+
+    const box=document.getElementById("profile-xp");
+    if(box){
+      box.parentElement.insertAdjacentHTML(
+        "afterend",
+        '<div class="info-card" style="margin-top:12px;border:1px solid #ff5555;">' +
+        '<div class="info-title">⚠️ Profile Error</div>' +
+        '<div class="info-desc" style="word-break:break-word;">' +
+        String(error?.message || error) +
+        '</div></div>'
+      );
+    }
   }
 }
 </script>
