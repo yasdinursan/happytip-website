@@ -3140,6 +3140,24 @@ body{
   display:block;
 }
 </style>
+
+
+<style id="wallet-htp-avatar-final">
+.htp-wallet-avatar{
+  background:linear-gradient(145deg,#f7c968,#d9942d)!important;
+  border-radius:19px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+.htp-wallet-avatar svg{
+  width:48px!important;
+  height:48px!important;
+  display:block!important;
+}
+</style>
+
 </head>
 
 <body>
@@ -4136,7 +4154,25 @@ async function showWallet(){
       </div>
 
       <div class="profile-hero">
-        <div class="avatar">👛</div>
+        <div class="avatar htp-wallet-avatar" aria-label="HappyTip HTP">
+          <svg viewBox="0 0 64 64">
+            <defs>
+              <linearGradient id="htpWalletAvatarGold" x1="8" y1="8" x2="56" y2="56">
+                <stop offset="0%" stop-color="#ffe08a"/>
+                <stop offset="48%" stop-color="#f5b84b"/>
+                <stop offset="100%" stop-color="#d98a28"/>
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="29" fill="url(#htpWalletAvatarGold)"/>
+            <circle cx="32" cy="32" r="24" fill="none" stroke="#fff2bd" stroke-width="2"/>
+            <path d="M21 17v30M43 17v30M21 32h14a7.5 7.5 0 0 0 0-15H21M21 32h15a7.5 7.5 0 0 1 0 15H21"
+              fill="none"
+              stroke="#17130b"
+              stroke-width="4.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div class="profile-name">My Wallet</div>
         <div class="profile-subtitle">HappyTip Wallet</div>
       </div>
@@ -4177,7 +4213,6 @@ async function showWallet(){
             </svg>
           </div>
           <div class="stat-value htp-money" id="wallet-htp">—</div>
-          <div class="stat-label">HTP</div>
         </div>
 
       </div>
