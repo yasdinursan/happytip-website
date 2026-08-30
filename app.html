@@ -113,6 +113,126 @@ button{font-family:inherit}
   fill:#dce3ef !important;
 }
 
+
+/* ============================================================
+   GLOBAL HAPPYTIP MONEY UI
+   HTP = green money value
+   $ prefix + 2 decimals
+   Applies to current and future UI elements using .htp-money
+   ============================================================ */
+
+.htp-money,
+.htp-amount,
+.htp-balance,
+.htp-reward-amount,
+.htp-value{
+  color:var(--htp-green,#39d98a) !important;
+  font-weight:900 !important;
+}
+
+.htp-money .htp-unit,
+.htp-amount .htp-unit,
+.htp-balance .htp-unit,
+.htp-reward-amount .htp-unit,
+.htp-value .htp-unit{
+  color:var(--htp-green,#39d98a) !important;
+  font-weight:900 !important;
+}
+
+/* HTP TOKEN LOGO — geometric HTP mark, never letter B */
+.htp-token-logo,
+.htp-wallet-token-logo{
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  min-height:30px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:9px !important;
+  background:linear-gradient(145deg,#f7c968,#d9942d) !important;
+  box-shadow:
+    0 3px 10px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+
+.htp-token-logo svg,
+.htp-wallet-token-logo svg{
+  width:23px !important;
+  height:23px !important;
+  display:block !important;
+}
+
+.htp-token-logo svg circle,
+.htp-wallet-token-logo svg circle{
+  display:none !important;
+}
+
+.htp-token-logo svg path,
+.htp-wallet-token-logo svg path{
+  stroke:#17130b !important;
+  stroke-width:3.2 !important;
+  fill:none !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+}
+
+/* Wallet HTP icon */
+.wallet-asset-icon.htp-logo{
+  width:36px !important;
+  height:36px !important;
+  min-width:36px !important;
+  min-height:36px !important;
+  border-radius:10px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:linear-gradient(145deg,#f7c968,#d9942d) !important;
+  color:#17130b !important;
+  box-shadow:0 3px 10px rgba(0,0,0,.22) !important;
+}
+
+.wallet-asset-icon.htp-logo svg{
+  width:26px !important;
+  height:26px !important;
+}
+
+.wallet-asset-icon.htp-logo svg path{
+  stroke:#17130b !important;
+  stroke-width:5 !important;
+  fill:none !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+}
+
+/* Wallet HTP number */
+#wallet-htp{
+  color:var(--htp-green,#39d98a) !important;
+  font-weight:900 !important;
+}
+
+/* ETH remains neutral */
+#wallet-eth{
+  color:#dce7f0 !important;
+  font-weight:900 !important;
+}
+
+/* All transaction amounts */
+#transaction-history .htp-money,
+#transaction-history .transaction-amount,
+#transaction-history .amount,
+#transaction-history .tx-amount{
+  color:var(--htp-green,#39d98a) !important;
+  font-weight:900 !important;
+}
+
+/* Home HTP balance */
+.home-page .balance-value,
+.home-page .balance-value span{
+  color:var(--htp-green,#39d98a) !important;
+  font-weight:900 !important;
+}
+
 </style>
 
 <style>
@@ -4056,7 +4176,7 @@ async function showWallet(){
                     stroke-linejoin="round"/>
             </svg>
           </div>
-          <div class="stat-value" id="wallet-htp">—</div>
+          <div class="stat-value htp-money" id="wallet-htp">—</div>
           <div class="stat-label">HTP</div>
         </div>
 
@@ -4205,8 +4325,11 @@ async function loadTransactionHistory(userId){
       const amount=Number(tx.amount || 0);
 
       const amountText=Number.isFinite(amount)
-        ? amount.toLocaleString("en-US",{maximumFractionDigits:4})
-        : String(tx.amount || "0");
+        ? "$"+amount.toLocaleString("en-US",{
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+          })+" HTP"
+        : "$0.00 HTP";
 
       const timestamp=Number(tx.timestamp || 0);
 
@@ -4367,8 +4490,8 @@ async function showReferral(){
 
     document.getElementById("ref-total").textContent=r.referral_count;
     document.getElementById("ref-active").textContent=r.active_referrals;
-    document.getElementById("ref-reward").textContent=r.referral_reward+" HTP";
-    document.getElementById("ref-per").textContent=r.reward_per_referral+" HTP";
+    document.getElementById("ref-reward").textContent="$"+Number(r.referral_reward||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+" HTP";
+    document.getElementById("ref-per").textContent="$"+Number(r.reward_per_referral||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+" HTP";
     document.getElementById("ref-link").textContent=r.referral_link;
 
     window.happyTipReferralLink=r.referral_link;
