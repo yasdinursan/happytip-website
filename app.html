@@ -3530,7 +3530,7 @@ async function showWithdraw(){
   }
 
   try{
-    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/wallet";
+    const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/wallet";
 
     const response=await fetch(
       API,
@@ -3615,7 +3615,7 @@ async function submitWithdraw(){
 
   try{
 
-    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/withdraw";
+    const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/withdraw";
 
     const response=await fetch(API,{
       method:"POST",
@@ -3883,7 +3883,7 @@ async function showGiveaway(){
     </div>
   `;
 
-  const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/giveaway";
+  const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/giveaway";
 
   try{
     const response=await fetch(
@@ -4091,7 +4091,7 @@ async function showDeposit(){
   }
 
   try{
-    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/wallet";
+    const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/wallet";
     const response=await fetch(
       API+"?user_id="+encodeURIComponent(userId)
     );
@@ -4264,7 +4264,7 @@ async function showWallet(){
   }
 
   try{
-    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/wallet";
+    const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/wallet";
     const response=await fetch(API+"?user_id="+encodeURIComponent(userId));
 
     if(!response.ok) throw new Error("API HTTP "+response.status);
@@ -4314,7 +4314,7 @@ async function loadTransactionHistory(userId){
   }
 
   try{
-    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/transactions";
+    const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/transactions";
     const response=await fetch(
       API+"?user_id="+encodeURIComponent(userId)
     );
@@ -4510,7 +4510,7 @@ async function showReferral(){
   }
 
   try{
-    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/referral";
+    const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/referral";
     const response=await fetch(API+"?user_id="+encodeURIComponent(userId));
 
     if(!response.ok) throw new Error("API HTTP "+response.status);
@@ -4736,7 +4736,7 @@ async function showProfile(){
 
   try{
 
-    const API="https://polymer-denied-trips-barrel.trycloudflare.com/api/profile";
+    const API="https://ratio-lights-cabinet-arc.trycloudflare.com/api/profile";
     document.getElementById("profile-progress").textContent="Connecting...";
 
     const controller=new AbortController();
